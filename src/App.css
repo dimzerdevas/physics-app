@@ -1,0 +1,159 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+}
+.content {
+  flex: 1 0 auto;
+}
+
+.feynman-triangle {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+.rotated {
+  transform : rotate(66deg); 
+}
+
+.feynman-triangle__edge {
+  border: 1px solid black;
+  position: absolute;
+}
+
+.feynman-triangle__controls {
+  position: absolute;
+  top: 300px;
+  left: 400px;
+}
+
+.feynman-triangle__edge--A {
+  top: 50px;
+  left: 450px;
+}
+
+.feynman-triangle__edge--B {
+  top: 10px;
+  left: 650px;
+}
+
+.feynman-triangle__edge--C {
+  top: 100px;
+  left: 650px;
+}
+
+.footer {
+  flex-shrink: 0;
+  background: lightgreen;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  transition: all 0.2s ease-in-out;
+}
+a:hover {
+  transform: scale(1.1);
+}
+
+.navigation {
+  background: lightblue;
+}
+
+.navigation--list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.homepage {
+  background: lightgray;
+}
+
+.main-menu {
+  background: lightsalmon;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 50px;
+  align-items: center;
+}
+
+.main-menu--option {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: lightsteelblue;
+  width: 240px;
+  border: 2px solid black;
+}
+
+.elemparticles--menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  padding: 50px 150px;
+  background: url(/assets/background.png);
+}
+
+.elemparticles--option {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.bariums-mesons {
+  display: flex;
+}
+
+.particle-display {
+  display: flex;
+  border: 1px solid black;
+  padding: 100px;
+}
+
+.particle {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 50px;
+}
+
+.particle-btn {
+  border: 1px solid black;
+  width: 100px;
+  background: lightsteelblue;
+  margin: 10px;
+}
+
+.instructions {
+  width: 400px;
+  border: 1px solid black;
+  padding: 50px;
+  position: absolute;
+  left: 230px;
+  top: 280px;
+  background: lightcoral;
+}
+
+.instructions button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: chocolate;
+}
+
+.feynman-diagram--container {
+  width: 150px;
+  margin: 10px auto;
+}
+
+.feynman-diagram {
+  display: flex;
+  border: 1px solid black;
+  padding: 10px;
+  list-style-type: none;
+}
