@@ -1,26 +1,114 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { Button, Menu, MenuItem, ListItemIcon, ListItemText } from '@material-ui/core/';
+import { withStyles } from '@material-ui/core/styles';
+
+const StyledMenu = withStyles({
+    paper: {
+        border: '1px solid #d3d4d5',
+    },
+})((props) => (
+    <Menu
+        elevation={0}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+        }}
+        transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+        }}
+        {...props}
+    />
+));
 
 function Nav() {
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
     return (
         <div className="navigation">
-            <ul className="navigation--list">
-                <li><Link to='/'>Αρχική</Link></li>
-                <li><Link to="/elementary-particles">Στοιχειώδη Σωματίδια</Link>
-                    <ul>
-                        <li><Link to="/elementary-particles-board">Πινακας Στοιχειωδων</Link></li>
-                        <li><Link to="/elementary-particles-generations">Γενιές Στοιχειώδων</Link></li>
-                        <li><Link to="/elementary-particles-game">Παιχνίδι Στοιχειωδων Σωματιδιων</Link></li>
-                    </ul>
-                </li>
-                <li><Link to="/interactions-elementary-particles">Αλληλεπιδρασεις Στοιχειωδων Σωματιδιων</Link>
-                    <ul>
-                        <li><Link to="/interactions-elementary-particles-theory">Θεωρια</Link></li>
-                        <li><Link to="/interactions-feynman-game">Παιξε με τα Διαγραμματα Feyman</Link></li>
-                        <li><Link to="/interactions-hadron-decay-game">Παιξε με την διάσπαση Ανδρονίων</Link></li>
-                    </ul>
-                </li>
-            </ul>
+            <Link to='/'>Αρχική</Link>
+            <div>
+                <Button
+                    aria-controls="customized-menu"
+                    aria-haspopup="true"
+                    variant="contained"
+                    color="primary"
+                    onClick={handleClick}
+                >
+                    <Link to="/elementary-particles">Στοιχειώδη Σωματίδια</Link>
+                </Button>
+                <StyledMenu
+                    id="customized-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                >
+                    <MenuItem>
+                        <ListItemIcon>
+                        </ListItemIcon>
+                        <Link to="/elementary-particles-board">
+                            <ListItemText primary="Πινακας Στοιχειωδων" />
+                        </Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <ListItemIcon>
+                        </ListItemIcon>
+                        <Link to="/elementary-particles-generations"><ListItemText primary="Γενιές Στοιχειώδων" /></Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <ListItemIcon>
+                        </ListItemIcon>
+                        <Link to="/elementary-particles-game"><ListItemText primary="Παιχνίδι Στοιχειωδων Σωματιδιων" /></Link>
+                    </MenuItem>
+                </StyledMenu>
+                <Button
+                    aria-controls="customized-menu"
+                    aria-haspopup="true"
+                    variant="contained"
+                    color="primary"
+                    onClick={handleClick}
+                >
+                    <Link to="/interactions-elementary-particles">Αλληλεπιδρασεις Στοιχειωδων Σωματιδιων</Link>
+                </Button>
+                <StyledMenu
+                    id="customized-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                >
+                    <MenuItem>
+                        <ListItemIcon>
+                        </ListItemIcon>
+                        <Link to="/interactions-elementary-particles-theory">
+                            <ListItemText primary="Θεωρία" />
+                        </Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <ListItemIcon>
+                        </ListItemIcon>
+                        <Link to="/interactions-feynman-game"><ListItemText primary="Παιξε με τα Διαγραμματα Feyman" /></Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <ListItemIcon>
+                        </ListItemIcon>
+                        <Link to="/interactions-hadron-decay-game"><ListItemText primary="Παιξε με την διάσπαση Ανδρονίων" /></Link>
+                    </MenuItem>
+                </StyledMenu>
+            </div>
+
         </div>)
 }
 
