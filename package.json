@@ -10,9 +10,11 @@
     "mdi-react": "^7.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-icons": "^4.1.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,6 +38,7 @@
     ]
   },
   "devDependencies": {
-    "@mdi/react": "^1.4.0"
+    "@mdi/react": "^1.4.0",
+    "react-social-icons": "^4.1.0"
   }
 }

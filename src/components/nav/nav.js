@@ -8,7 +8,7 @@ function Nav() {
             <Link className="navigation__main_menu--first" to='/'>< FaHome className="navigation__main_menu__home_link" /></Link>
             <div className="navigation__main_menu">
                 <Link className="navigation__main_menu__main_link"
-                      to="/interactions-elementary-particles"
+                      to="/elementary-particles-generations"
                 >
                     <button tabIndex="-1">
                         Στοιχειώδη Σωματίδια
