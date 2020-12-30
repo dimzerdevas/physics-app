@@ -116,7 +116,7 @@ a {
 }
 
 .main-container {
-  height: 530px;
+  min-height: 530px;
   background: linear-gradient(0deg, #bac1cf, #c0c5cf, #dfe2e8);
 }
 
@@ -137,6 +137,10 @@ a {
   margin-top: 5px;
   color: #46494f;
   letter-spacing: 0.05px;
+}
+
+.large-text-header {
+  padding-top: 45px;
 }
 
 .main-menu {
@@ -172,18 +176,18 @@ a {
   opacity: 0.6;
 }
 
-.main-menu__option--first {
+.main-menu__option--first, .main-menu__option--second {
   position: relative;
   margin-bottom: 0;
 }
 
-.main-menu__option--first::before {
+.main-menu__option--first::before, .main-menu__option--second::before {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 2.5px;
+  height: 2px;
   background-color: #95a8c7;
 }
 
@@ -202,13 +206,8 @@ a {
   }
 }
 
-.elemparticles--menu {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border: 1px solid black;
-  padding: 50px 150px;
-  background: url(/assets/background.png);
+.subCategories-menu--padding {
+  padding-top: 0;
 }
 
 .elemparticles--option {
@@ -218,6 +217,17 @@ a {
   width: 100px;
   padding: 10px;
   border: 1px solid black;
+}
+
+.two_paragraphs_text {
+  margin-top: 10px;
+  padding: 0 100px;
+  max-width: 850px;
+}
+
+.two_paragraphs_text--first, .two_paragraphs_text--second {
+  text-align: justify;
+  margin-top: 20px;
 }
 
 .bariums-mesons {
