@@ -8,7 +8,7 @@ function Nav() {
             <Link className="navigation__main-menu--first" to='/'>< FaHome className="navigation__main-menu__home-link" /></Link>
             <div className="navigation__main-menu">
                 <Link className="navigation__main-menu__main-link"
-                      to="/elementary-particles-generations"
+                      to="/elementary-particles"
                 >
                     <button tabIndex="-1">
                         Στοιχειώδη Σωματίδια
@@ -18,7 +18,7 @@ function Nav() {
                       to="/interactions-elementary-particles"
                 >
                     <button tabIndex="-1">
-                        Αλληλεπιδρασεις Στοιχειωδων Σωματιδιων
+                        Αλληλεπιδράσεις Στοιχειωδών Σωματιδίων
                     </button>
                 </Link>
             </div>

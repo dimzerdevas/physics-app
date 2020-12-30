@@ -5,21 +5,24 @@ import { Link } from 'react-router-dom'
 function Home() {
     return (
         <div className="content-container">
-            <div>
+            <div className="content-container__header">
                 <h1>ΤΟ ΠΑΝΗΓΥΡΙ ΤΗΣ ΦΥΣΙΚΗΣ ΤΩΝ ΣΩΜΑΤΙΔΙΩΝ</h1>
                 <p>μια ματιά στο γενεαλογικό δέντρο των ανδρονίων</p>
             </div>
             <div className="main-menu">
-                <Link to='/elementary-particles'>
-                    <div className="main-menu--option">
+                <p>Επίλεξε μια από τις δύο κατηγορίες για να ξεκινήσεις την αναζήτηση σου</p>
+                <div className="main-menu__home-links">
+                <Link tabIndex="-1" to='/elementary-particles'>
+                    <button className="main-menu__option main-menu__option--first">
                         <h2>ΣΤΟΙΧΕΙΩΔΗ ΣΩΜΑΤΙΔΙΑ</h2>
-                    </div>
+                    </button>
                 </Link>
-                <Link to='/interactions-elementary-particles'>
-                    <div className="main-menu--option">
+                <Link tabIndex="-1" to='/interactions-elementary-particles'>
+                    <button className="main-menu__option">
                         <h2>ΑΛΛΗΛΕΠΙΔΡΑΣΕΙΣ ΣΤΟΙΧΕΙΩΔΩΝ ΣΩΜΑΤΙΔΩΝ</h2>
-                    </div>
+                    </button>
                 </Link>
+                </div>
             </div>
         </div>)
 }
