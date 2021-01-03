@@ -14,7 +14,6 @@ function HadronDecayGame() {
     }
 
     const toggleOpenGame = (hadronDecay) => {
-        console.log(hadronDecay)
         if (hadronDecay) {
             setSelectedHadronDecay(hadronDecay)
         }

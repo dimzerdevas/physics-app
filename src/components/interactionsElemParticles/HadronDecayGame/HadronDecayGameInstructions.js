@@ -3,7 +3,7 @@ import React from 'react';
 function HadronDecayGameInstructions({ toggleOpenGame }) {
     
 
-    const HadronDecayChoice = ({ hadron, firstProduct, secondProduct, thirdProduct }) => {
+    const HadronDecayChoice = ({ hadron, firstProduct, secondProduct, thirdProduct, key }) => {
         const arrowHTML = <span>&#8594;</span>
         const hadronDecayElements = {hadron, firstProduct, secondProduct, thirdProduct}
         
@@ -35,13 +35,13 @@ function HadronDecayGameInstructions({ toggleOpenGame }) {
             </div>
             <div className="hadron-instructions__decay-list">
                 <HadronDecayChoice
-                    hadron="n"
+                    hadron={["n"]}
                     firstProduct="p"
                     secondProduct={["e", <sup>-</sup>]}
-                    thirdProduct={[<span style={{ 'text-decoration': 'overline' }}>v</span>, <sub>e</sub>]}
+                    thirdProduct={[<span style={{ 'textDecoration': 'overline' }}>v</span>, <sub>e</sub>]}
                 />
                 <HadronDecayChoice
-                    hadron="Λ"
+                    hadron={["Λ"]}
                     firstProduct="p"
                     secondProduct={["π", <sup>-</sup>]}
                 />

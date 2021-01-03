@@ -308,6 +308,13 @@ a {
 
 .hadron-game-container {
  display: flex;
+ justify-content: space-around;
+}
+
+.quark-particles-container{
+  display: flex;
+  width: 370px;
+  flex-wrap: wrap;
 }
 
 .footer p {
