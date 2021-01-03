@@ -1,7 +1,10 @@
-import React from 'react';
-import HadronDecay from './hadronDecay'
+import React, { useState }from 'react';
 
 function HadronDecayGameInstructions() {
+    const [hasStartedGame, setHasStartedGame ] = useState(false)
+    function proceedToHadronDecayGame() {
+        console.log('here')
+    };
     return (
         <div className="hadron-instructions-container">
             <div>
@@ -20,7 +23,7 @@ function HadronDecayGameInstructions() {
             </div>
             <div className="hadron-instructions__decay-list">
                 <div>
-                    <input type="radio" />
+                    <input type="radio" onClick={proceedToHadronDecayGame}/>
                     <label for="male">n <span>&#8594;</span> p e<sup>-</sup> <span style={{ "text-decoration": "overline" }}>v</span><sub>e</sub></label>
                 </div>
                 <div>
@@ -33,7 +36,7 @@ function HadronDecayGameInstructions() {
                 </div>
                 <div>
                     <input type="radio" />
-                    <label for="male">Ω <span>&#8594;</span> Λ Κ<sup>-</sup></label>
+                    <label for="male">Ω<sup>-</sup> <span>&#8594;</span> Λ Κ<sup>-</sup></label>
                 </div>
                 <div>
                     <input type="radio" />
