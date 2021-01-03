@@ -31,7 +31,7 @@ function HadronDecayGamePlay({ hadronDecay }) {
             />
             <div className="hadron-game-container">
                 <Particle name={hadron}/>
-                <div className="particle-display">You have selected:
+                <div className="particle-display">Επιλεγμένα:
                 {selectedParticles.map((particleName, index) => {
                     return (
                         <Particle
@@ -40,6 +40,7 @@ function HadronDecayGamePlay({ hadronDecay }) {
                         />
                     )
                 })}
+                Χρειάζεσαι {hadron === "n"? 3: 2} κουαρκ
                 </div>
                 <div>
                     <ParticleButton

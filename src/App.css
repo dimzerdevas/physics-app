@@ -242,9 +242,11 @@ a {
 
 .particle {
   border: 1px solid black;
+  border-radius: 50%;
   width: 50px;
   height: 50px;
-  border-radius: 50px;
+  line-height: 40px;
+  white-space: nowrap;
 }
 
 .particle-btn {
