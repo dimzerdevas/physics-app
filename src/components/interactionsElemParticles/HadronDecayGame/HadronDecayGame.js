@@ -6,10 +6,21 @@ import { Link } from 'react-router-dom'
 
 function HadronDecayGame() {
     const [isShowingInstructions, setIsShowingInstructions] = useState(false)
+    const [isGameOpen, setIsGameOpen] = useState(false)
+    const [selectedHadronDecay, setSelectedHadronDecay] = useState({})
+
     const toggleOpenInstructions = () => {
         setIsShowingInstructions(!isShowingInstructions)
     }
 
+    const toggleOpenGame = (hadronDecay) => {
+        console.log(hadronDecay)
+        if (hadronDecay) {
+            setSelectedHadronDecay(hadronDecay)
+        }
+        
+        setIsGameOpen(!isGameOpen)
+    }
     if (!isShowingInstructions) {
         return (
             <div>
@@ -39,10 +50,16 @@ function HadronDecayGame() {
             </div>
                 <button onClick={toggleOpenInstructions}>Δοκίμασε να διασπάσεις ανδρόνιο</button>
             </div>)
+    } else if (isGameOpen) {
+        return (<div>
+            <p>Game Open</p>
+            <HadronDecayGamePlay hadronDecay={selectedHadronDecay} />
+            <button onClick={toggleOpenGame}>Αρχή του Παιχνιδιού</button>
+        </div>)
     } else {
         return (
             <div>
-                <HadronDecayGameInstructions />
+                <HadronDecayGameInstructions toggleOpenGame={toggleOpenGame} />
                 <button onClick={toggleOpenInstructions}>Πίσω στην Θεωρία</button>
             </div>
         )

@@ -1,10 +1,22 @@
-import React, { useState }from 'react';
+import React from 'react';
 
-function HadronDecayGameInstructions() {
-    const [hasStartedGame, setHasStartedGame ] = useState(false)
-    function proceedToHadronDecayGame() {
-        console.log('here')
-    };
+function HadronDecayGameInstructions({ toggleOpenGame }) {
+    
+
+    const HadronDecayChoice = ({ hadron, firstProduct, secondProduct, thirdProduct }) => {
+        const arrowHTML = <span>&#8594;</span>
+        const hadronDecayElements = {hadron, firstProduct, secondProduct, thirdProduct}
+        
+        const proceedToHadronDecayGame = () => {
+            toggleOpenGame(hadronDecayElements);
+        };
+        return (
+            <div>
+                <input type="radio" onClick={proceedToHadronDecayGame} />
+                <label> {hadron} {arrowHTML} {firstProduct} {secondProduct} {thirdProduct}</label>
+            </div>
+        )
+    }
     return (
         <div className="hadron-instructions-container">
             <div>
@@ -22,31 +34,37 @@ function HadronDecayGameInstructions() {
                 </ol>
             </div>
             <div className="hadron-instructions__decay-list">
-                <div>
-                    <input type="radio" onClick={proceedToHadronDecayGame}/>
-                    <label for="male">n <span>&#8594;</span> p e<sup>-</sup> <span style={{ "text-decoration": "overline" }}>v</span><sub>e</sub></label>
-                </div>
-                <div>
-                    <input type="radio" />
-                    <label for="male">Λ <span>&#8594;</span> p π<sup>-</sup></label>
-                </div>
-                <div>
-                    <input type="radio" />
-                    <label for="male">Σ<sup>-</sup> <span>&#8594;</span> n π<sup>-</sup></label>
-                </div>
-                <div>
-                    <input type="radio" />
-                    <label for="male">Ω<sup>-</sup> <span>&#8594;</span> Λ Κ<sup>-</sup></label>
-                </div>
-                <div>
-                    <input type="radio" />
-                    <label for="male">Κ<sup>+</sup> <span>&#8594;</span> μ<sup>+</sup> ν<sub>μ</sub></label>
-                </div>
-                <div>
-                    <input type="radio" />
-                    <label for="male"> π<sup>+</sup> <span>&#8594;</span> μ<sup>+</sup> ν<sub>μ</sub></label>
-                </div>
-
+                <HadronDecayChoice
+                    hadron="n"
+                    firstProduct="p"
+                    secondProduct={["e", <sup>-</sup>]}
+                    thirdProduct={[<span style={{ 'text-decoration': 'overline' }}>v</span>, <sub>e</sub>]}
+                />
+                <HadronDecayChoice
+                    hadron="Λ"
+                    firstProduct="p"
+                    secondProduct={["π", <sup>-</sup>]}
+                />
+                <HadronDecayChoice
+                    hadron={["Σ", <sup>-</sup>]}
+                    firstProduct="n"
+                    secondProduct={["π", <sup>-</sup>]}
+                />
+                <HadronDecayChoice
+                    hadron={["Ω", <sup>-</sup>]}
+                    firstProduct="Λ"
+                    secondProduct={["Κ", <sup>-</sup>]}
+                />
+                <HadronDecayChoice
+                    hadron={["Κ", <sup>+</sup>]}
+                    firstProduct={["μ", <sup>+</sup>]}
+                    secondProduct={["ν", <sub>μ</sub>]}
+                />
+                <HadronDecayChoice
+                    hadron={["π", <sup>+</sup>]}
+                    firstProduct={["μ", <sup>+</sup>]}
+                    secondProduct={["ν", <sub>μ</sub>]}
+                />
             </div>
         </div >)
 }
