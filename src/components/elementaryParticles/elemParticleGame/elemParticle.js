@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Particle(props) {
+function Particle({name, index}) {
     return (
-        <div className="particle">
-            Particle: {props.name}
+        <div className={"particle" + " particle_" + index}>
+            {name}
         </div>
     )
 }

@@ -164,6 +164,7 @@ a {
 }
 
 .main-menu__option {
+  cursor: pointer;
   width: 100%;
   padding: 30px 0;
   margin-bottom: 2px;
@@ -196,16 +197,6 @@ a {
   animation-duration: 0.5s;
 }
 
-@keyframes homePageLinksFocus {
-  0% {
-    opacity: 0.6;
-  }
-  100% {
-    filter: brightness(120%);
-    opacity: 1;
-  }
-}
-
 .subCategories-menu--padding {
   padding-top: 0;
 }
@@ -228,22 +219,6 @@ a {
 .two_paragraphs_text--first, .two_paragraphs_text--second {
   text-align: justify;
   margin-top: 20px;
-}
-
-.bariums-mesons {
-  display: flex;
-}
-
-.particle-display {
-  display: flex;
-  border: 1px solid black;
-  padding: 100px;
-}
-
-.particle {
-  border: 1px solid black;
-  padding: 20px;
-  border-radius: 50px;
 }
 
 .particle-btn {
@@ -280,6 +255,233 @@ a {
   border: 1px solid black;
   padding: 10px;
   list-style-type: none;
+}
+
+.particle-display {
+  display: flex;
+  position: relative;
+  padding: 100px;
+}
+
+.particle-header {
+  position: absolute;
+  top: 130px;
+  right: 17vw;
+  font-size: 18px;
+  max-width: 355px;
+  color: #46494f;
+  font-weight: bold;
+  text-align: left;
+}
+
+.particles-error {
+  position: absolute;
+  color: darkred;
+  font-size: 14px;
+  max-width: 355px;
+  font-weight: bold;
+  text-align: left;
+  right: 17vw;
+  top: 220px;
+}
+
+.particles-success {
+  position: absolute;
+  color: darkgreen;
+  font-size: 14px;
+  max-width: 355px;
+  font-weight: bold;
+  text-align: left;
+  right: 22vw;
+  top: 220px;
+}
+
+.bowl {
+  margin-left: 180px;
+  display: block;
+  position: relative;
+  width: 9rem;
+  height: 9rem;
+  background: #f2f2f5;
+  border-radius: .2rem .2rem 3rem 3rem;
+  border-bottom: 0.25rem solid #929294;
+  z-index: 0;
+}
+
+.bowl::after {
+  content: '';
+  background: #364059;
+  display: block;
+  position: absolute;
+  width: inherit;
+  height: 0.3rem;
+  top: 0.5rem;
+}
+
+.particle {
+  text-align: center;
+  position: absolute;
+  width: 29px;
+  height: 25px;
+  padding-top: 4px;
+  border-radius: 100%;
+  border: 3px solid black;
+  background-color: #757575;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.particle_0 {
+  top: 136px;
+  animation: particle_appearance_0 both ease-out;
+  animation-duration: 2s;
+}
+
+.particle_1 {
+  top: 182px;
+  animation: particle_appearance_1 both ease-out;
+  animation-duration: 2s;
+}
+
+.particle_2 {
+  top: 142px;
+  animation: particle_appearance_2 both ease-out;
+  animation-duration: 2s;
+}
+
+@keyframes particle_appearance_0 {
+  0% {
+    left: 540px;
+    opacity: 0;
+    transform: rotate(0) scale(0);
+  }
+
+  40% {
+    opacity: 0.3;
+  }
+
+  100% {
+    left: 305px;
+    opacity: 0.9;
+    transform: rotate(-360deg) scale(1);
+  }
+}
+
+@keyframes particle_appearance_1 {
+  0% {
+    left: 580px;
+    opacity: 0;
+    transform: rotate(0) scale(0);
+  }
+
+  40% {
+    opacity: 0.3;
+  }
+
+  100% {
+    left: 328px;
+    opacity: 0.9;
+    transform: rotate(-360deg) scale(1);
+  }
+}
+
+@keyframes particle_appearance_2 {
+  0% {
+    left: 633px;
+    opacity: 0;
+    transform: rotate(0) scale(0);
+  }
+
+  40% {
+    opacity: 0.3;
+  }
+
+  100% {
+    left: 363px;
+    opacity: 0.9;
+    transform: rotate(-360deg) scale(1);
+  }
+}
+
+.bariums-mesons {
+  display: inline-block;
+  width: 75%;
+  margin-left: 20%;
+}
+
+.bariums-mesons__particle {
+  cursor: pointer;
+  float: left;
+  margin: 0 30px;
+  height: 50px;
+  width: 58px;
+  padding-top: 4px;
+  border-radius: 50%;
+  border: 3px solid black;
+  background-color: #3c404a;
+  opacity: 1;
+}
+
+.bariums-mesons__particle:hover,
+.bariums-mesons__particle:focus {
+  outline: none;
+  animation: particlesFocus both ease-out;
+  animation-duration: 0.5s;
+}
+
+@keyframes particlesFocus {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    background-color: #2d3038;
+    filter: brightness(180%);
+  }
+}
+
+
+.bariums-mesons__particle p {
+  font-weight: bold;
+  color: white;
+  line-height: 24px;
+  margin: 0;
+}
+
+.game-controllers {
+  display: inline-block;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.game-controllers button {
+  cursor: pointer;
+  margin: 0 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 4px;
+  border: none;
+  width: 25%;
+  height: 40px;
+  background: linear-gradient(45deg, grey, #43474f, #696b70 10%, #2c2d30 90%);
+}
+
+.game-controllers button:hover,
+.game-controllers button:focus {
+  animation: homePageLinksFocus both ease-out;
+  animation-duration: 0.5s;
+}
+
+@keyframes homePageLinksFocus {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    filter: brightness(120%);
+    opacity: 1;
+  }
 }
 
 .footer {
