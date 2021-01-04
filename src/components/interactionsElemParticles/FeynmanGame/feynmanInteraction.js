@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-function FeynmanInteraction({ react, result, onClick }) {
+function FeynmanInteraction({ react, result, onClick, index }) {
     const arrowHTML = <span>&#8594;</span>
 
     const chooseInteraction = () => {
-        onClick(react, result)
+        onClick(react, result, index)
     }
 
     return (

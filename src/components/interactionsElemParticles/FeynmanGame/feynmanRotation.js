@@ -1,18 +1,38 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 
-function FeynmanRotation({initialReact, initialResult}) {
+function FeynmanRotation({initialReact, initialResult, dataCollection}) {
     const arrowHTML = <span>&#8594;</span>
 
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentRelationship, setCurrentRelationship] = useState(dataCollection[0]);
+
+    // useEffect(() => {
+    //     console.log(currentIndex, currentRelationship, 'hey')
+    // }, [currentIndex, currentRelationship]);
+
     const rotateRight = () => {
-        console.log('right')
-        const feynmanTriangle = document.querySelector(".feynman-triangle")
-        feynmanTriangle.classList.toggle('rotated')
-    }
+        let newIndex = currentIndex;
+        if (dataCollection.length-1 > currentIndex) {
+            setCurrentIndex(newIndex+1);
+            setCurrentRelationship(dataCollection[newIndex+1]);
+        } else {
+            setCurrentIndex(0);
+            setCurrentRelationship(dataCollection[0]);
+        }
+    };
+
     const rotateLeft = () => {
-        console.log('left')
-    }
+        let newIndex = currentIndex;
+        if ( currentIndex === 0 ) {
+            setCurrentIndex(dataCollection.length-1);
+            setCurrentRelationship(dataCollection[dataCollection.length-1]);
+        } else {
+            setCurrentIndex(newIndex-1);
+            setCurrentRelationship(dataCollection[newIndex-1]);
+        }
+    };
+
     const rotateOpposite = () => {
-        console.log('opposite')
     }
     return (
         <div>
@@ -27,7 +47,8 @@ function FeynmanRotation({initialReact, initialResult}) {
                 <button onClick={rotateLeft}>Αριστερή Περιστροφή</button>
                 <button onClick={rotateOpposite}>Αντιστροφή</button>
             </div>
-        </div>)
+        </div>
+    )
 }
 
 export default FeynmanRotation;

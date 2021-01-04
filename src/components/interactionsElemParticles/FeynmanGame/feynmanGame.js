@@ -43,16 +43,21 @@ const fourth_game_data_collection = [
 
 
 function FeynmanGame() {
-    const [hasChosenInteraction, setHasChosenInteraction] = useState(false)
-    const [selected, setSelected] = useState({ react: '', result: '' })
+    const [hasChosenInteraction, setHasChosenInteraction] = useState(false);
+    const [selected, setSelected] = useState({ react: '', result: '' , dataCollectionSelected: []});
 
     const toggleOpenGame = () => {
         setHasChosenInteraction(!hasChosenInteraction)
     };
     
-    const chooseInteraction = (react, result) => {
+    const chooseInteraction = (react, result, index) => {
+        console.log(react, result);
         toggleOpenGame();
-        setSelected({ react, result });
+        const dataCollectionSelected = index === 1 ? first_game_data_collection :
+                                       index === 2 ? second_game_data_collection :
+                                       index === 3 ? third_game_data_collection :
+                                       index === 4 ? fourth_game_data_collection : null;
+        setSelected({ react, result , dataCollectionSelected});
     };
 
     if (!hasChosenInteraction) {
@@ -72,8 +77,9 @@ function FeynmanGame() {
                 <ul className="feynman-diagram--container">
                     <li className="feynman-diagram">
                         <FeynmanInteraction
-                            react={["u"]}
-                            result={["d"]}
+                            react={"u"}
+                            result={"d"}
+                            index={1}
                             onClick={chooseInteraction}
                         />
                     </li>
@@ -81,6 +87,7 @@ function FeynmanGame() {
                         <FeynmanInteraction
                             react={["u"]}
                             result={["s"]}
+                            index={2}
                             onClick={chooseInteraction}
                         />
                     </li>
@@ -88,6 +95,7 @@ function FeynmanGame() {
                         <FeynmanInteraction
                             react={["v"]}
                             result={["e", <sup>-</sup>]}
+                            index={3}
                             onClick={chooseInteraction}
                         />
                     </li>
@@ -95,6 +103,7 @@ function FeynmanGame() {
                         <FeynmanInteraction
                             react={["v"]}
                             result={["μ", <sup>-</sup>]}
+                            index={4}
                             onClick={chooseInteraction}
                         />
                     </li>
@@ -103,7 +112,7 @@ function FeynmanGame() {
     } else {
         return (
             <div className="feynman-rotation-container">
-                <FeynmanRotation initialReact={selected.react} initialResult={selected.result} />
+                <FeynmanRotation initialReact={selected.react} initialResult={selected.result} dataCollection={selected.dataCollectionSelected} />
                 <button onClick={toggleOpenGame}>Πίσω στην Θεωρία</button>
             </div>
 
