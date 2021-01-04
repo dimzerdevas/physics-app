@@ -9,10 +9,14 @@ function FeynmanInteraction({ react, result, onClick }) {
     }
 
     return (
-        <div >
-            <input type="radio" onClick={chooseInteraction}></input>
-            <span>{react} {arrowHTML} {result} W<sup>+</sup></span>
-        </div>)
+        <div>
+            <input className="pointer" id={{react} + "_" + {result}} type="radio" onClick={chooseInteraction} />
+            <label for={{react} + "_" + {result}}
+                   className="feynman-diagram__label pointer">
+                {react} {arrowHTML} {result} W<sup>+</sup>
+            </label>
+        </div>
+    )
 }
 
 export default FeynmanInteraction;
