@@ -12,33 +12,30 @@ const first_game_data_collection = [
 ];
 
 const second_game_data_collection = [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
+    ["u", "arrow", "s", "W+"],
+    ["W-", "u", "arrow", "s"],
+    ["W-", "arrow", "_u", "s"],
+    ["_s", "W-", "arrow", "_u"],
+    ["_s", "arrow", "W+", "_u"],
+    ["u", "_s", "arrow", "W+"],
 ];
 
 const third_game_data_collection = [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
+    ["ve", "arrow", "e-", "W+"],
+    ["W-", "ve", "arrow", "e-"],
+    ["W-", "arrow", "_ve", "e-"],
+    ["e+", "W-", "arrow", "_ve"],
+    ["e+", "arrow", "W+", "_ve"],
+    ["ve", "e+", "arrow", "W+"],
 ];
 
 const fourth_game_data_collection = [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
+    ["vμ", "arrow", "μ-", "W+"],
+    ["W-", "vμ", "arrow", "μ-"],
+    ["W-", "arrow", "_vμ", "μ-"],
+    ["μ+", "W-", "arrow", "_vμ"],
+    ["μ+", "arrow", "W+", "_vμ"],
+    ["_vμ", "μ+", "arrow", "W+"],
 ];
 
 
