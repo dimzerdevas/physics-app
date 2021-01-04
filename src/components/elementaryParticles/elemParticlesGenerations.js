@@ -28,7 +28,8 @@ function ElemParticlesGenerations() {
                     </p>
                 </div>
             </main>
-        </div>)
+        </div>
+    )
 }
 
 export default ElemParticlesGenerations;

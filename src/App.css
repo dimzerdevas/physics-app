@@ -522,6 +522,18 @@ a {
   flex-wrap: wrap;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+.table_cell {
+  width: 25%;
+  border: 1px solid black;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .footer p {
   color: #ebeff7;
   font-weight: 600;
