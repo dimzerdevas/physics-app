@@ -3,13 +3,12 @@ import FeynmanInteraction from './feynmanInteraction';
 import FeynmanRotation from './feynmanRotation';
 
 const first_game_data_collection = [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
+    ["u", "arrow", "d", "W+"],
+    ["W-", "u", "arrow", "d"],
+    ["W-", "arrow", "u_", "d"],
+    ["_d", "W-", "arrow", "_u"],
+    ["_d", "arrow", "W+", "_u"],
+    ["u", "_d", "arrow", "W+"],
 ];
 
 const second_game_data_collection = [
