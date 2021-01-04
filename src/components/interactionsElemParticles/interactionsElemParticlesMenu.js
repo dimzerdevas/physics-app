@@ -15,7 +15,7 @@ function InteractionsElemParticlesMenu() {
                         <Link tabIndex="-1" to="/interactions-elementary-particles-theory">
                             <button className="main-menu__option main-menu__option--first">ΘΕΩΡΙΑ</button>
                         </Link>
-                        <Link tabIndex="-1" to="/interactions-feyman-game">
+                        <Link tabIndex="-1" to="/interactions-feynman-game">
                             <button className="main-menu__option main-menu__option--second">ΠΑΙΞΕ ΜΕ ΤΑ ΔΙΑΓΡΑΜΜΑΤΑ FEYMAN</button>
                         </Link>
                         <Link tabIndex="-1" to="/interactions-hadron-decay-game">

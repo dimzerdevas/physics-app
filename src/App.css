@@ -8,6 +8,9 @@
   flex: 1 0 auto;
 }
 
+.feynman-rotation-container {
+}
+
 .feynman-triangle {
   display: flex;
   justify-content: center;
@@ -15,7 +18,7 @@
   transition: all 0.5s ease-in-out;
 }
 .rotated {
-  transform : rotate(66deg); 
+  transform: rotate(66deg);
 }
 
 .feynman-triangle__edge {
@@ -101,7 +104,7 @@ a {
 .navigation__main-menu--first:hover,
 .navigation__main-menu--first:focus,
 .navigation__main-menu__main-link:hover,
-.navigation__main-menu__main-link:focus{
+.navigation__main-menu__main-link:focus {
   animation: navHover both ease-out;
   animation-duration: 0.5s;
 }
@@ -177,12 +180,14 @@ a {
   opacity: 0.6;
 }
 
-.main-menu__option--first, .main-menu__option--second {
+.main-menu__option--first,
+.main-menu__option--second {
   position: relative;
   margin-bottom: 0;
 }
 
-.main-menu__option--first::before, .main-menu__option--second::before {
+.main-menu__option--first::before,
+.main-menu__option--second::before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -192,7 +197,8 @@ a {
   background-color: #95a8c7;
 }
 
-.main-menu__option:hover, .main-menu__option:focus {
+.main-menu__option:hover,
+.main-menu__option:focus {
   animation: homePageLinksFocus both ease-out;
   animation-duration: 0.5s;
 }
@@ -216,7 +222,8 @@ a {
   max-width: 850px;
 }
 
-.two_paragraphs_text--first, .two_paragraphs_text--second {
+.two_paragraphs_text--first,
+.two_paragraphs_text--second {
   text-align: justify;
   margin-top: 20px;
 }
@@ -303,13 +310,13 @@ a {
   width: 9rem;
   height: 9rem;
   background: #f2f2f5;
-  border-radius: .2rem .2rem 3rem 3rem;
+  border-radius: 0.2rem 0.2rem 3rem 3rem;
   border-bottom: 0.25rem solid #929294;
   z-index: 0;
 }
 
 .bowl::after {
-  content: '';
+  content: "";
   background: #364059;
   display: block;
   position: absolute;
@@ -441,7 +448,6 @@ a {
   }
 }
 
-
 .bariums-mesons__particle p {
   font-weight: bold;
   color: white;
@@ -506,11 +512,11 @@ a {
 }
 
 .hadron-game-container {
- display: flex;
- justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
-.quark-particles-container{
+.quark-particles-container {
   display: flex;
   width: 370px;
   flex-wrap: wrap;
@@ -521,10 +527,10 @@ a {
   font-weight: 600;
   opacity: 0.9;
   letter-spacing: 0.16px;
-
 }
 
-h1, h2 {
+h1,
+h2 {
   margin: 0;
   padding: 0;
 }

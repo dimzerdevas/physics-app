@@ -116,13 +116,13 @@ const ElemParticlesGame = () => {
             <div className="particle-display">
                 <div className="bowl"></div>
                 {selectedParticles.map((particleName, index) => {
-                return (
-                    <Particle
-                        name={particleName}
-                        index={index}
-                        key={index}
-                    />
-                )
+                    return (
+                        <Particle
+                            name={particleName}
+                            index={index}
+                            key={index}
+                        />
+                    )
                 })}
                 {warningTooMany ? <div className="particles-error">Μπορείς να επιλέξεις μέχρι τρία σωματίδια. Δοκίμασε ξανά πατώντας επαναφορά.</div> : null}
                 {endGame ? winner ? <div className="particles-success">Μπράβο, παίξε ξανά πατώντας επαναφορά.</div> : <div className="particles-error">Δυστυχώς η συσχέτιση των σωματιδίων δεν είναι σωστή, παίξε ξανά πατώντας επαναφορά.</div> : null}
@@ -137,6 +137,7 @@ const ElemParticlesGame = () => {
                     name="u"
                     load="2/3"
                     index="1"
+                    displayedName={["u"]}
                     addnewparticle={addNewParticle}
                 />
                 <ParticleButton
@@ -144,6 +145,7 @@ const ElemParticlesGame = () => {
                     name="d"
                     load="-1/3"
                     index="2"
+                    displayedName={["d"]}
                     addnewparticle={addNewParticle}
                 />
                 <ParticleButton
@@ -151,6 +153,7 @@ const ElemParticlesGame = () => {
                     name="s"
                     load="-1/3"
                     index="3"
+                    displayedName={["s"]}
                     addnewparticle={addNewParticle}
                 />
                 <ParticleButton
@@ -158,6 +161,7 @@ const ElemParticlesGame = () => {
                     name="u_"
                     load="-2/3"
                     index="4"
+                    displayedName={[<span style={{ 'textDecoration': 'overline' }}>u</span>]}
                     addnewparticle={addNewParticle}
                 />
                 <ParticleButton
@@ -165,6 +169,7 @@ const ElemParticlesGame = () => {
                     name="d_"
                     load="1/3"
                     index="5"
+                    displayedName={[<span style={{ 'textDecoration': 'overline' }}>d</span>]}
                     addnewparticle={addNewParticle}
                 />
                 <ParticleButton
@@ -172,6 +177,7 @@ const ElemParticlesGame = () => {
                     name="s_"
                     load="1/3"
                     index="6"
+                    displayedName={[<span style={{ 'textDecoration': 'overline' }}>s</span>]}
                     addnewparticle={addNewParticle}
                 />
             </div>

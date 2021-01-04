@@ -3,7 +3,7 @@ import React from 'react';
 function HadronDecayGameInstructions({ toggleOpenGame }) {
     
 
-    const HadronDecayChoice = ({ hadron, firstProduct, secondProduct, thirdProduct, key }) => {
+    const HadronDecayChoice = ({ hadron, firstProduct, secondProduct, thirdProduct }) => {
         const arrowHTML = <span>&#8594;</span>
         const hadronDecayElements = {hadron, firstProduct, secondProduct, thirdProduct}
         

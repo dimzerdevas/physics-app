@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
 import ParticleButton from '../../elementaryParticles/elemParticleGame/elemParticleGameButton'
 import Particle from '../../elementaryParticles/elemParticleGame/elemParticle'
+import HadronDecayElement from './hadronDecayElement'
 
 import { isEqual } from 'lodash'
 
 function HadronDecayGamePlay({ hadronDecay }) {
     const { hadron, firstProduct, secondProduct, thirdProduct } = hadronDecay
 
-    const HadronDecayElement = ({ hadron, firstProduct, secondProduct, thirdProduct }) => {
-        const arrowHTML = <span>&#8594;</span>
-        return (
-            <label> {hadron} {arrowHTML} {firstProduct} {secondProduct} {thirdProduct}</label>
-        )
-    }
-
     const [selectedParticles, setSelectedParticles] = useState([])
     const [wrongChoice, setWrongChoice] = useState(false)
     const [hasCompletedFirstStage, setHasCompletedFirstStage] = useState(false)
 
     const findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) != index)
+
+
     const correctCombo = {
         n: ["u", "d", "d"],
         lamda: ["u", "d", "s"],
@@ -29,8 +25,6 @@ function HadronDecayGamePlay({ hadronDecay }) {
     }
 
     const checkCorrectParticles = (selectedParticles, givenParticle, correctParticles) => {
-        console.log(selectedParticles, givenParticle, correctParticles)
-
         const correctParticleDuplicate = findDuplicates(correctParticles)
         const isCorrectAmount = isEqual(findDuplicates(selectedParticles).sort(), correctParticleDuplicate.sort())
 
@@ -43,17 +37,15 @@ function HadronDecayGamePlay({ hadronDecay }) {
         } else {
             setWrongChoice(true)
         }
-        isEqual(selectedParticles.sort(), correctParticles.sort()) && setHasCompletedFirstStage(true)
+        isEqual(selectedParticles, correctParticles) && setHasCompletedFirstStage(true)
     }
 
-    const selectParticles = (particleName) => {
+    const addnewparticle = (particleName) => {
         setWrongChoice(false)
-        let duplicates = findDuplicates(selectedParticles)
         const newSelectedParticles = selectedParticles.slice()
 
         switch (hadron[0]) {
             case 'n':
-                console.log(correctCombo.n)
                 checkCorrectParticles(newSelectedParticles, particleName, correctCombo.n)
                 break;
             case 'Λ':
@@ -72,9 +64,10 @@ function HadronDecayGamePlay({ hadronDecay }) {
                 checkCorrectParticles(newSelectedParticles, particleName, correctCombo.pi)
                 break;
         }
-
     }
 
+    const chooseParticleToMatchDecay = (name) => {
+    }
     return (
         <div>
             <p>GamePlay για την διασπαση ανδρονιων</p>
@@ -94,6 +87,9 @@ function HadronDecayGamePlay({ hadronDecay }) {
                             return (
                                 <Particle
                                     name={particleName}
+                                    onClick={chooseParticleToMatchDecay}
+                                    isClickable={hasCompletedFirstStage}
+                                    index={index}
                                     key={index}
                                 />
                             )
@@ -107,39 +103,52 @@ function HadronDecayGamePlay({ hadronDecay }) {
                     <ParticleButton
                         id="u"
                         name="u"
-                        load="+2/3"
-                        onClick={selectParticles}
+                        load="2/3"
+                        index="1"
+                        displayedName={["u"]}
+                        addnewparticle={addnewparticle}
                     />
                     <ParticleButton
                         id="d"
                         name="d"
                         load="-1/3"
-                        onClick={selectParticles}
+                        index="2"
+                        displayedName={["d"]}
+                        addnewparticle={addnewparticle}
                     />
                     <ParticleButton
                         id="s"
                         name="s"
                         load="-1/3"
-                        onClick={selectParticles}
+                        index="3"
+                        displayedName={["s"]}
+                        addnewparticle={addnewparticle}
                     />
                     <ParticleButton
                         id="u_"
                         name="u_"
                         load="-2/3"
-                        onClick={selectParticles}
+                        index="4"
+                        displayedName={[<span style={{ 'textDecoration': 'overline' }}>u</span>]}
+                        addnewparticle={addnewparticle}
                     />
                     <ParticleButton
                         id="d_"
                         name="d_"
-                        load="+1/3"
-                        onClick={selectParticles}
+                        load="1/3"
+                        index="5"
+                        displayedName={[<span style={{ 'textDecoration': 'overline' }}>d</span>]}
+                        addnewparticle={addnewparticle}
                     />
                     <ParticleButton
                         id="s_"
                         name="s_"
-                        load="+1/3"
-                        onClick={selectParticles}
-                    /></div>
+                        load="1/3"
+                        index="6"
+                        displayedName={[<span style={{ 'textDecoration': 'overline' }}>s</span>]}
+                        addnewparticle={addnewparticle}
+                    />
+                </div>
             </div>
 
 
