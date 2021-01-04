@@ -3,7 +3,7 @@ import FeynmanInteraction from './feynmanInteraction';
 import FeynmanRotation from './feynmanRotation';
 
 const first_game_data_collection = [
-    ["u", "arrow", "d", "W+"],
+    ["u-", "arrow", "d", "W+"],
     ["W-", "u", "arrow", "d"],
     ["W-", "arrow", "u_", "d"],
     ["_d", "W-", "arrow", "_u"],
@@ -109,8 +109,7 @@ function FeynmanGame() {
     } else {
         return (
             <div className="feynman-rotation-container">
-                <FeynmanRotation initialReact={selected.react} initialResult={selected.result} dataCollection={selected.dataCollectionSelected} />
-                <button onClick={toggleOpenGame}>Πίσω στην Θεωρία</button>
+                <FeynmanRotation toggleOpenGame={toggleOpenGame} initialReact={selected.react} initialResult={selected.result} dataCollection={selected.dataCollectionSelected} />
             </div>
 
         )
