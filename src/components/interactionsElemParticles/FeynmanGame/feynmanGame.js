@@ -3,39 +3,39 @@ import FeynmanInteraction from './feynmanInteraction';
 import FeynmanRotation from './feynmanRotation';
 
 const first_game_data_collection = [
-    ["u-", "arrow", "d", "W+"],
+    ["u_", "arrow", "d", "W+"],
     ["W-", "u", "arrow", "d"],
     ["W-", "arrow", "u_", "d"],
-    ["_d", "W-", "arrow", "_u"],
-    ["_d", "arrow", "W+", "_u"],
-    ["u", "_d", "arrow", "W+"],
+    ["d_", "W-", "arrow", "u_"],
+    ["d_", "arrow", "W+", "u_"],
+    ["u", "d_", "arrow", "W+"],
 ];
 
 const second_game_data_collection = [
     ["u", "arrow", "s", "W+"],
     ["W-", "u", "arrow", "s"],
-    ["W-", "arrow", "_u", "s"],
-    ["_s", "W-", "arrow", "_u"],
-    ["_s", "arrow", "W+", "_u"],
-    ["u", "_s", "arrow", "W+"],
+    ["W-", "arrow", "u_", "s"],
+    ["s_", "W-", "arrow", "u_"],
+    ["s_", "arrow", "W+", "u_"],
+    ["u", "s_", "arrow", "W+"],
 ];
 
 const third_game_data_collection = [
     ["ve", "arrow", "e-", "W+"],
     ["W-", "ve", "arrow", "e-"],
-    ["W-", "arrow", "_ve", "e-"],
-    ["e+", "W-", "arrow", "_ve"],
-    ["e+", "arrow", "W+", "_ve"],
+    ["W-", "arrow", "ve_", "e-"],
+    ["e+", "W-", "arrow", "ve_"],
+    ["e+", "arrow", "W+", "ve_"],
     ["ve", "e+", "arrow", "W+"],
 ];
 
 const fourth_game_data_collection = [
     ["vμ", "arrow", "μ-", "W+"],
     ["W-", "vμ", "arrow", "μ-"],
-    ["W-", "arrow", "_vμ", "μ-"],
-    ["μ+", "W-", "arrow", "_vμ"],
-    ["μ+", "arrow", "W+", "_vμ"],
-    ["_vμ", "μ+", "arrow", "W+"],
+    ["W-", "arrow", "vμ_", "μ-"],
+    ["μ+", "W-", "arrow", "vμ_"],
+    ["μ+", "arrow", "W+", "vμ_"],
+    ["vμ_", "μ+", "arrow", "W+"],
 ];
 
 
@@ -48,7 +48,6 @@ function FeynmanGame() {
     };
     
     const chooseInteraction = (react, result, index) => {
-        console.log(react, result);
         toggleOpenGame();
         const dataCollectionSelected = index === 1 ? first_game_data_collection :
                                        index === 2 ? second_game_data_collection :

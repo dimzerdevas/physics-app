@@ -205,6 +205,7 @@ function HadronDecayGamePlay({ hadronDecay }) {
                     <FeynmanSection
                         name={hadronTranslator(hadron[0])}
                         correctCombo={correctComboStageTwo[hadronTranslator(hadron[0])][3]}
+                        correctParticle={correctComboStageTwo[hadronTranslator(hadron[0])][0]}
                         hasChosenCorrectParticle={hasChosenParticleStageTwo}
                     />)
                 }

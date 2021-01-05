@@ -1,19 +1,59 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-function HadronFeynmanRotation ({dataCollection}) {
+function HadronFeynmanRotation({ particleToMatch, dataCollection }) {
     const arrowHTML = <span>&#8594;</span>
 
+    const changeDisplayedDataCollection = (dataCollection) => dataCollection.map(position => position.map(particle => {
+        switch (particle) {
+            case 'u_':
+                return <span style={{ 'textDecoration': 'overline' }}>u</span>
+            case 'u':
+                return <span>u</span>
+            case 'd':
+                return <span>d</span>
+            case 'd_':
+                return <span style={{ 'textDecoration': 'overline' }}>u</span>
+            case 's':
+                return <span>s</span>
+            case 's_':
+                return <span style={{ 'textDecoration': 'overline' }}>s</span>
+            case 've':
+                return <span>v<sub>e</sub></span>
+            case 'e-':
+                return <span>e<sup>-</sup></span>
+            case 'e+':
+                return <span>e<sup>+</sup></span>
+            case 've_':
+                return <span style={{ 'textDecoration': 'overline' }}>v<sub>e</sub></span>
+            case 'μ+':
+                return <span>μ<sup>+</sup></span>
+            case 'μ-':
+                return <span>μ<sup>-</sup></span>
+            case 'νμ':
+                return <span>ν<sub>μ</sub></span>
+            case 'νμ_':
+                return <span style={{ 'textDecoration': 'overline' }}>ν<sub>μ</sub></span>
+            case 'W+':
+                return <span>W<sup>+</sup></span>
+            case 'W-':
+                return <span>W<sup>-</sup></span>
+            case 'arrow':
+                return "arrow"
+        }
+    }))
+
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [currentRelationship, setCurrentRelationship] = useState(dataCollection[0]);
+    const [currentRelationship, setCurrentRelationship] = useState(changeDisplayedDataCollection(dataCollection)[0]);
     const [isRotationEnabled, setIsRotationEnabled] = useState(false);
-    const [reversedDataCollection, setReversedDataCollection] = useState(dataCollection);
+    const [reversedDataCollection, setReversedDataCollection] = useState(changeDisplayedDataCollection(dataCollection));
+    const [displayCorrectMatch, setDisplayCorrectMatch] = useState(null)
 
     const rotateRight = () => {
         let newIndex = currentIndex;
-        if (dataCollection.length-1 > currentIndex) {
-            setCurrentIndex(newIndex+1);
-            isRotationEnabled ? setCurrentRelationship(dataCollection[newIndex+1])
-                              : setCurrentRelationship(reversedDataCollection[newIndex+1]);
+        if (dataCollection.length - 1 > currentIndex) {
+            setCurrentIndex(newIndex + 1);
+            isRotationEnabled ? setCurrentRelationship(changeDisplayedDataCollection(dataCollection)[newIndex + 1])
+                : setCurrentRelationship(reversedDataCollection[newIndex + 1]);
         } else {
             setCurrentIndex(0);
             setCurrentRelationship(reversedDataCollection[0]);
@@ -22,13 +62,13 @@ function HadronFeynmanRotation ({dataCollection}) {
 
     const rotateLeft = () => {
         let newIndex = currentIndex;
-        if ( currentIndex === 0 ) {
-            setCurrentIndex(dataCollection.length-1);
-            !isRotationEnabled ? setCurrentRelationship(dataCollection[dataCollection.length-1])
-                              : setCurrentRelationship(reversedDataCollection[dataCollection.length-1]);
+        if (currentIndex === 0) {
+            setCurrentIndex(dataCollection.length - 1);
+            !isRotationEnabled ? setCurrentRelationship(changeDisplayedDataCollection(dataCollection)[dataCollection.length - 1])
+                : setCurrentRelationship(reversedDataCollection[dataCollection.length - 1]);
         } else {
-            setCurrentIndex(newIndex-1);
-            setCurrentRelationship(reversedDataCollection[newIndex-1]);
+            setCurrentIndex(newIndex - 1);
+            setCurrentRelationship(reversedDataCollection[newIndex - 1]);
         }
     };
 
@@ -50,7 +90,11 @@ function HadronFeynmanRotation ({dataCollection}) {
     };
 
     const checkForMatch = () => {
-        
+        if (particleToMatch === currentRelationship[0]) {
+            setDisplayCorrectMatch(true)
+        } else {
+            setDisplayCorrectMatch(false)
+        }
     }
 
     return (
@@ -87,7 +131,16 @@ function HadronFeynmanRotation ({dataCollection}) {
                     </div>
                 </div>
             }
-            <div className="feynman-triangle__controls">
+            {!displayCorrectMatch &&
+                (<p style={{
+                    color: 'red', position: "absolute", top: "4%", left: '66%', width: '200px'
+                }}>Με αυτό το προσανατολισμό δεν μπορείς να προσαρμόσεις την κορυφή στο σωματίδιο που ενεργοποιήσες</p>)
+            }
+            {
+                displayCorrectMatch &&
+                (<p style={{ color: 'green', position: 'absolute', top: '45%', left: '76%' }}>Μπράβο!</p>)
+            }
+            <div className="feynman-triangle__controls" style={{ width: "100%" }}>
                 <div className="feynman-triangle__rotations">
                     <button className="main-menu__option space main-menu__option--first" onClick={rotateLeft}>Αριστερή Περιστροφή</button>
                     <button className="main-menu__option space main-menu__option--first" onClick={rotateRight}>Δεξιά Περιστροφή</button>
@@ -99,7 +152,7 @@ function HadronFeynmanRotation ({dataCollection}) {
                     <button className="main-menu__option space" onClick={checkForMatch}>Επικόλληση</button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

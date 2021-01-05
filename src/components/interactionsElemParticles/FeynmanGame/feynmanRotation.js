@@ -3,16 +3,57 @@ import React, {useState} from 'react';
 function FeynmanRotation({toggleOpenGame, dataCollection}) {
     const arrowHTML = <span>&#8594;</span>
 
+    const changeDisplayedDataCollection = (dataCollection) => dataCollection.map(position => position.map(particle => {
+        switch (particle) {
+            case 'u_':
+                return <span style={{ 'textDecoration': 'overline' }}>u</span>
+            case 'u':
+                return <span>u</span>
+            case 'd':
+                return <span>d</span>
+            case 'd_':
+                return <span style={{ 'textDecoration': 'overline' }}>u</span>
+            case 's':
+                return <span>s</span>
+            case 's_':
+                return <span style={{ 'textDecoration': 'overline' }}>s</span>
+            case 've':
+                return <span>v<sub>e</sub></span>
+            case 'e-':
+                return <span>e<sup>-</sup></span>
+            case 'e+':
+                return <span>e<sup>+</sup></span>
+            case 've_':
+                return <span style={{ 'textDecoration': 'overline' }}>v<sub>e</sub></span>
+            case 'μ+':
+                return <span>μ<sup>+</sup></span>
+            case 'μ-':
+                return <span>μ<sup>-</sup></span>
+            case 'νμ':
+                return <span>ν<sub>μ</sub></span>
+            case 'νμ_':
+                return <span style={{ 'textDecoration': 'overline' }}>ν<sub>μ</sub></span>
+            case 'W+':
+                return <span>W<sup>+</sup></span>
+            case 'W-':
+                return <span>W<sup>-</sup></span>
+            case 'arrow':
+                return "arrow"
+        }
+    }))
+
+
+
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [currentRelationship, setCurrentRelationship] = useState(dataCollection[0]);
+    const [currentRelationship, setCurrentRelationship] = useState(changeDisplayedDataCollection(dataCollection)[0]);
     const [isRotationEnabled, setIsRotationEnabled] = useState(false);
-    const [reversedDataCollection, setReversedDataCollection] = useState(dataCollection);
+    const [reversedDataCollection, setReversedDataCollection] = useState(changeDisplayedDataCollection(dataCollection));
 
     const rotateRight = () => {
         let newIndex = currentIndex;
         if (dataCollection.length-1 > currentIndex) {
             setCurrentIndex(newIndex+1);
-            isRotationEnabled ? setCurrentRelationship(dataCollection[newIndex+1])
+            isRotationEnabled ? setCurrentRelationship(changeDisplayedDataCollection(dataCollection)[newIndex+1])
                               : setCurrentRelationship(reversedDataCollection[newIndex+1]);
         } else {
             setCurrentIndex(0);
@@ -24,7 +65,7 @@ function FeynmanRotation({toggleOpenGame, dataCollection}) {
         let newIndex = currentIndex;
         if ( currentIndex === 0 ) {
             setCurrentIndex(dataCollection.length-1);
-            !isRotationEnabled ? setCurrentRelationship(dataCollection[dataCollection.length-1])
+            !isRotationEnabled ? setCurrentRelationship(changeDisplayedDataCollection(dataCollection)[dataCollection.length-1])
                               : setCurrentRelationship(reversedDataCollection[dataCollection.length-1]);
         } else {
             setCurrentIndex(newIndex-1);
