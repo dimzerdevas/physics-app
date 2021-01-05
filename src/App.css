@@ -621,7 +621,6 @@ a {
 
 .space {
   margin: 0 2px;
-
 }
 
 .footer {
@@ -648,6 +647,42 @@ a {
 .hadron-game-container {
   display: flex;
   justify-content: space-around;
+}
+
+.primary_particle {
+  top: 325px;
+  left: 230px;
+}
+
+.particle_hadron_0 {
+  top: 50px;
+  left: 90px;
+  animation: hadron both ease-out;
+  animation-duration: 1s;
+}
+
+.particle_hadron_1 {
+  top: 90px;
+  left: 90px;
+  animation: hadron both ease-out;
+  animation-duration: 1s;
+}
+
+.particle_hadron_2 {
+  top: 130px;
+  left: 90px;
+  animation: hadron both ease-out;
+  animation-duration: 1s;
+}
+
+@keyframes hadron {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .quark-particles-container {

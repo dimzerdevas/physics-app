@@ -78,10 +78,10 @@ function HadronDecayGamePlay({ hadronDecay }) {
                 thirdProduct={thirdProduct}
             />
             <div className="hadron-game-container">
-                <Particle name={hadron} />
                 <div >
                     <p>Χρειάζεσαι {hadron[0] === "Κ" || hadron[0] === "π" ? 2 : 3} κουαρκ</p>
                     <p>Επιλεγμένα:</p>
+                    <Particle classStyle={" primary_particle"} name={hadron} />
                     <div className="particle-display">
                         {selectedParticles.map((particleName, index) => {
                             return (
@@ -91,6 +91,7 @@ function HadronDecayGamePlay({ hadronDecay }) {
                                     isClickable={hasCompletedFirstStage}
                                     index={index}
                                     key={index}
+                                    classStyle={" particle_hadron_" + index}
                                 />
                             )
                         })}

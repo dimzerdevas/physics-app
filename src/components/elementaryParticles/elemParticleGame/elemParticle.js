@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Particle({ name, index, onClick, isClickable }) {
+function Particle({ name, index, onClick, isClickable, classStyle }) {
     const chooseToMatchWithDecay = () => {
         if (isClickable) {
             onClick(name)
@@ -13,7 +13,7 @@ function Particle({ name, index, onClick, isClickable }) {
     newName = hasOverline ? <span style={{ 'textDecoration': 'overline' }}>{name.slice(0, -1)}</span> : name;
 
     return (
-        <div className={"particle" + " particle_" + index} onClick={chooseToMatchWithDecay}>
+        <div className={classStyle ? "particle" + classStyle : "particle" + " particle_" + index } onClick={chooseToMatchWithDecay}>
             {newName}
         </div>
     )
