@@ -26,12 +26,12 @@ function HadronDecayGamePlay({ hadronDecay }) {
     }
 
     const correctComboStageTwo = {
-        n: ["d", "u", "d", "u-d-W"],
-        lamda: ["s", "u", "d"],
-        sigma: ["d", "d", "s"],
-        omega: ["s", "s", "s"],
-        kappa: ["u", "s_"],
-        pi: ["u", "d_"],
+        n: ["d", "u", "d", "u-d-w"],
+        lamda: ["s", "u", "d", "u-s-w"],
+        sigma: ["s", "d", "d", "u-s-w"],
+        omega: ["s", "s", "s", "u-s-w"],
+        kappa: ["s_", "u", "u-s-w"],
+        pi: ["u", "d_", "u-d-w"],
     }
 
     const checkCorrectParticles = (selectedParticles, givenParticle, correctParticles) => {
@@ -76,28 +76,31 @@ function HadronDecayGamePlay({ hadronDecay }) {
         }
     }
 
+    const hadronTranslator = (hadron) => {
+        switch (hadron) {
+            case 'n':
+                return "n"
+                break;
+            case 'Λ':
+                return "lamda"
+                break;
+            case 'Σ':
+                return "sigma"
+                break;
+            case 'Ω':
+                return "omega"
+                break;
+            case 'Κ':
+                return "kappa"
+                break;
+            case 'π':
+                return "pi"
+                break;
+        }
+    }
+
     const chooseParticleToMatchDecay = (name) => {
         console.log('here')
-        switch (hadron[0]) {
-            // case 'n':
-            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.n)
-            //     break;
-            // case 'Λ':
-            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.lamda)
-            //     break;
-            // case 'Σ':
-            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.sigma)
-            //     break;
-            // case 'Ω':
-            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.omega)
-            //     break;
-            // case 'Κ':
-            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.kappa)
-            //     break;
-            // case 'π':
-            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.pi)
-            //     break;
-        }
     }
     return (
         <div>
@@ -113,20 +116,37 @@ function HadronDecayGamePlay({ hadronDecay }) {
                     <p>Χρειάζεσαι {hadron[0] === "Κ" || hadron[0] === "π" ? 2 : 3} κουαρκ</p>
                     <p>Επιλεγμένα:</p>
                     <Particle classStyle={" primary_particle"} name={hadron} />
-                    <div className="particle-display">
-                        {selectedParticles.map((particleName, index) => {
-                            return (
-                                <Particle
-                                    name={particleName}
-                                    onClick={chooseParticleToMatchDecay}
-                                    isClickable={hasCompletedFirstStage}
-                                    index={index}
-                                    key={index}
-                                    classStyle={" particle_hadron_" + index}
-                                />
-                            )
-                        })}
-                    </div>
+                    {!hasCompletedFirstStage &&
+                        (<div className="particle-display">
+                            {selectedParticles.map((particleName, index) => {
+                                return (
+                                    <Particle
+                                        name={particleName}
+                                        index={index}
+                                        key={index}
+                                        classStyle={" particle_hadron_" + index}
+                                    />
+                                )
+                            })}
+                        </div>)}
+                    {hasCompletedFirstStage &&
+                        (<div className="particle-display">
+                            {correctComboStageTwo[hadronTranslator(hadron[0])].map((particleName, index) => {
+                                if (index <= 2) {
+                                    return (
+                                        <Particle
+                                            name={particleName}
+                                            onClick={chooseParticleToMatchDecay}
+                                            correctDecay={correctComboStageTwo[3]}
+                                            isClickable={hasCompletedFirstStage}
+                                            index={index}
+                                            key={index}
+                                            classStyle={" particle_hadron_" + index}
+                                        />
+                                    )
+                                }
+                            })}
+                        </div>)}
 
                     {wrongChoice && !hasCompletedFirstStage && <p>Επιλέξτε κάποιο άλλο κουάρκ σωματίδιο</p>}
                     {hasCompletedFirstStage && <p>Συμπληρώσατε όλα τα κουαρκ σωστά</p>}
