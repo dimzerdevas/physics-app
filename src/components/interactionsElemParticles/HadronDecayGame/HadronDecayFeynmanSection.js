@@ -4,7 +4,7 @@ import HadronFeynmanInteraction from './HadronDecayFeynmanInteraction';
 import HadronFeynmanRotation from './HadronFeynmanRotation';
 
 const first_game_data_collection = [
-    ["u_", "arrow", "d", "W+"],
+    ["u", "arrow", "d", "W+"],
     ["W-", "u", "arrow", "d"],
     ["W-", "arrow", "u_", "d"],
     ["d_", "W-", "arrow", "u_"],

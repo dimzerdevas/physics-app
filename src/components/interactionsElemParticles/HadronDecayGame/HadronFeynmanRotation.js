@@ -90,7 +90,7 @@ function HadronFeynmanRotation({ particleToMatch, dataCollection }) {
     };
 
     const checkForMatch = () => {
-        if (particleToMatch === currentRelationship[0]) {
+        if (particleToMatch === currentRelationship[0].props.children) {
             setDisplayCorrectMatch(true)
         } else {
             setDisplayCorrectMatch(false)
