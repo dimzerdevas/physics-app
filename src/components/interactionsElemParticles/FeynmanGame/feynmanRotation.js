@@ -84,10 +84,16 @@ function FeynmanRotation({toggleOpenGame, initialReact, initialResult, dataColle
                 </div>
             }
             <div className="feynman-triangle__controls">
-                <button onClick={rotateRight}>Δεξιά Περιστροφή</button>
-                <button onClick={rotateLeft}>Αριστερή Περιστροφή</button>
-                <button onClick={rotateOpposite}>Αντιστροφή</button>
-                <button onClick={toggleOpenGame}>Πίσω στην Θεωρία</button>
+                <div className="feynman-triangle__rotations">
+                    <button className="main-menu__option space main-menu__option--first" onClick={rotateLeft}>Αριστερή Περιστροφή</button>
+                    <button className="main-menu__option space main-menu__option--first" onClick={rotateRight}>Δεξιά Περιστροφή</button>
+                </div>
+                <div className="feynman-triangle__reverse">
+                    <button className="main-menu__option space main-menu__option--second" onClick={rotateOpposite}>Αντιστροφή</button>
+                </div>
+                <div className="feynman-triangle__back">
+                    <button className="main-menu__option space" onClick={toggleOpenGame}>Πίσω στην Θεωρία</button>
+                </div>
             </div>
         </div>
     )

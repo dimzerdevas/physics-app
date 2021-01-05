@@ -8,43 +8,6 @@
   flex: 1 0 auto;
 }
 
-.feynman-rotation-container {
-}
-
-.feynman-triangle {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  transition: all 0.5s ease-in-out;
-}
-.rotated {
-  transform: rotate(66deg);
-}
-
-.feynman-triangle__edge {
-  border: 1px solid black;
-  position: absolute;
-}
-
-.feynman-triangle__controls {
-  width: 100%;
-}
-
-.feynman-triangle__edge--A {
-  top: 50px;
-  left: 450px;
-}
-
-.feynman-triangle__edge--B {
-  top: 10px;
-  left: 650px;
-}
-
-.feynman-triangle__edge--C {
-  top: 100px;
-  left: 650px;
-}
-
 a {
   text-decoration: none;
   color: black;
@@ -625,6 +588,40 @@ a {
   position: absolute;
   top: 60%;
   left: 41.9%;
+}
+
+.feynman-triangle {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+.rotated {
+  transform: rotate(66deg);
+}
+
+.feynman-triangle__edge {
+  border: 1px solid black;
+  position: absolute;
+}
+
+.feynman-triangle__controls {
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+}
+
+.feynman-triangle__rotations,
+.feynman-triangle__reverse,
+.feynman-triangle__back {
+  display: flex;
+  height: auto;
+  padding-bottom: 1px;
+}
+
+.space {
+  margin: 0 2px;
+
 }
 
 .footer {
