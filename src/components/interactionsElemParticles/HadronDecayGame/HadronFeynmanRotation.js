@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function FeynmanRotation({toggleOpenGame, dataCollection}) {
+function HadronFeynmanRotation ({dataCollection}) {
     const arrowHTML = <span>&#8594;</span>
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,36 +49,40 @@ function FeynmanRotation({toggleOpenGame, dataCollection}) {
         setIsRotationEnabled(newRotationStatus);
     };
 
+    const checkForMatch = () => {
+        
+    }
+
     return (
         <div className="triangle-container">
             { currentRelationship.indexOf('arrow') === 1 ?
                 <div className="one_left_triangle">
                     <div className="center"></div>
-                    <div className="left-bar"></div>
-                    <div className='particle left-particle'>
+                    <div className="hadron-left-bar"></div>
+                    <div className='particle hadron-left-particle'>
                         {currentRelationship[0]}
                     </div>
-                    <div className="left-top-bar"></div>
-                    <div className='particle left-top-particle'>
+                    <div className="hadron-left-top-bar"></div>
+                    <div className='particle hadron-left-top-particle'>
                         {currentRelationship[2]}
                     </div>
-                    <div className="left-bottom-bar"></div>
-                    <div className='particle left-bottom-particle'>
+                    <div className="hadron-left-bottom-bar"></div>
+                    <div className='particle hadron-left-bottom-particle'>
                         {currentRelationship[3]}
                     </div>
                 </div> :
                 <div className="two_left_triangle">
                     <div className="center"></div>
-                    <div className="right-bar"></div>
-                    <div className='particle right-particle'>
+                    <div className="hadron-right-bar"></div>
+                    <div className='particle hadron-right-particle'>
                         {currentRelationship[3]}
                     </div>
-                    <div className="right-bottom-bar"></div>
-                    <div className='particle right-bottom-particle'>
+                    <div className="hadron-right-bottom-bar"></div>
+                    <div className='particle hadron-right-bottom-particle'>
                         {currentRelationship[0]}
                     </div>
-                    <div className="right-top-bar"></div>
-                    <div className='particle right-top-particle'>
+                    <div className="hadron-right-top-bar"></div>
+                    <div className='particle hadron-right-top-particle'>
                         {currentRelationship[1]}
                     </div>
                 </div>
@@ -92,11 +96,11 @@ function FeynmanRotation({toggleOpenGame, dataCollection}) {
                     <button className="main-menu__option space main-menu__option--second" onClick={rotateOpposite}>Αντιστροφή</button>
                 </div>
                 <div className="feynman-triangle__back">
-                    <button className="main-menu__option space" onClick={toggleOpenGame}>Πίσω στην Θεωρία</button>
+                    <button className="main-menu__option space" onClick={checkForMatch}>Επικόλληση</button>
                 </div>
             </div>
         </div>
     )
 }
 
-export default FeynmanRotation;
+export default HadronFeynmanRotation

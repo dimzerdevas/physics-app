@@ -51,7 +51,6 @@ function HadronDecayGame() {
             </div>)
     } else if (isGameOpen) {
         return (<div>
-            <p>Game Open</p>
             <HadronDecayGamePlay hadronDecay={selectedHadronDecay} />
             <button onClick={toggleOpenGame}>Πίσω στις οδηγίες</button>
         </div>)

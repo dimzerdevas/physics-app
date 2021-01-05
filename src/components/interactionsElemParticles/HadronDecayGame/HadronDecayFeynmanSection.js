@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import HadronFeynmanInteraction from './HadronDecayFeynmanInteraction';
-import FeynmanRotation from '../FeynmanGame/feynmanRotation';
+import HadronFeynmanRotation from './HadronFeynmanRotation';
 
 const first_game_data_collection = [
     ["u-", "arrow", "d", "W+"],
@@ -39,22 +39,50 @@ const fourth_game_data_collection = [
     ["_vμ", "μ+", "arrow", "W+"],
 ];
 
-function FeynmanSection() {
+function FeynmanSection({ correctCombo, name, hasChosenCorrectParticle }) {
     const [hasChosenInteraction, setHasChosenInteraction] = useState(false);
     const [selected, setSelected] = useState({ react: '', result: '', dataCollectionSelected: [] });
+    const [displayWrongChoiceMessage, setDisplayWrongChoiceMessage] = useState(false)
+    const [displayChooseParticleMessage, setDisplayChooseParticleMessage] = useState(false)
 
     const toggleOpenGame = () => {
         setHasChosenInteraction(!hasChosenInteraction)
     };
 
+
+    let decayElementName;
+    switch (name) {
+        case 'n':
+            decayElementName = "του νετρονίου"
+            break;
+        case 'Λ':
+            decayElementName = "του σωματιδίου Λάμδα"
+            break;
+        case 'Σ':
+            decayElementName = <span>του σωματιδίου Σ<sup>-</sup></span>
+            break;
+    }
+
     const chooseInteraction = (react, result, index) => {
-        console.log(react, result);
-        toggleOpenGame();
-        const dataCollectionSelected = index === 1 ? first_game_data_collection :
-            index === 2 ? second_game_data_collection :
-                index === 3 ? third_game_data_collection :
-                    index === 4 ? fourth_game_data_collection : null;
-        setSelected({ react, result, dataCollectionSelected });
+        setDisplayWrongChoiceMessage(false)
+        setDisplayChooseParticleMessage(false)
+
+        console.log(hasChosenCorrectParticle)
+
+        const decayOption = `${react}-${result}-w`
+        
+        if (!hasChosenCorrectParticle) {
+            setDisplayChooseParticleMessage(true)
+        } else if (decayOption === correctCombo) {
+            toggleOpenGame();
+            const dataCollectionSelected = index === 1 ? first_game_data_collection :
+                index === 2 ? second_game_data_collection :
+                    index === 3 ? third_game_data_collection :
+                        index === 4 ? fourth_game_data_collection : null;
+            setSelected({ react, result, dataCollectionSelected }); 
+        } else {
+            setDisplayWrongChoiceMessage(true)
+        }
     };
 
     if (!hasChosenInteraction) {
@@ -71,6 +99,14 @@ function FeynmanSection() {
                     </li>
                     <li className="feynman-diagram">
                         <HadronFeynmanInteraction
+                            react={["e"]}
+                            result={["v", <sub>e</sub>]}
+                            index={3}
+                            onClick={chooseInteraction}
+                        />
+                    </li>
+                    <li className="feynman-diagram">
+                        <HadronFeynmanInteraction
                             react={["u"]}
                             result={["s"]}
                             index={2}
@@ -79,26 +115,23 @@ function FeynmanSection() {
                     </li>
                     <li className="feynman-diagram">
                         <HadronFeynmanInteraction
-                            react={["v"]}
-                            result={["e", <sup>-</sup>]}
-                            index={3}
-                            onClick={chooseInteraction}
-                        />
-                    </li>
-                    <li className="feynman-diagram">
-                        <HadronFeynmanInteraction
-                            react={["v"]}
-                            result={["μ", <sup>-</sup>]}
+                            react={["μ"]}
+                            result={["ν", <sub>μ</sub>]}
                             index={4}
                             onClick={chooseInteraction}
                         />
                     </li>
                 </ul>
+                {displayWrongChoiceMessage &&
+                    (<p style={{ color: 'red' }}>Αυτό το κουάρκ δεν μετασχηματίζεται σε αυτή τη διάσπαση {decayElementName}</p>)}
+                {displayChooseParticleMessage && !hasChosenCorrectParticle &&
+                    (<p style={{ color: 'red' }}>Επελεξε ενα κουαρκ για να μετασχηματίσεις σε αυτή τη διάσπαση</p>)
+                }
             </div>)
     } else {
         return (
             <div className="feynman-rotation-container">
-                <FeynmanRotation toggleOpenGame={toggleOpenGame} initialReact={selected.react} initialResult={selected.result} dataCollection={selected.dataCollectionSelected} />
+                <HadronFeynmanRotation toggleOpenGame={toggleOpenGame} initialReact={selected.react} initialResult={selected.result} dataCollection={selected.dataCollectionSelected} />
             </div>
 
         )

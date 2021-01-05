@@ -39,31 +39,37 @@ function HadronDecayGameInstructions({ toggleOpenGame }) {
                     firstProduct="p"
                     secondProduct={["e", <sup>-</sup>]}
                     thirdProduct={[<span style={{ 'textDecoration': 'overline' }}>v</span>, <sub>e</sub>]}
+                    key={1}
                 />
                 <HadronDecayChoice
                     hadron={["Λ"]}
                     firstProduct="p"
                     secondProduct={["π", <sup>-</sup>]}
+                    key={2}
                 />
                 <HadronDecayChoice
                     hadron={["Σ", <sup>-</sup>]}
                     firstProduct="n"
                     secondProduct={["π", <sup>-</sup>]}
+                    key={3}
                 />
                 <HadronDecayChoice
                     hadron={["Ω", <sup>-</sup>]}
                     firstProduct="Λ"
                     secondProduct={["Κ", <sup>-</sup>]}
+                    key={4}
                 />
                 <HadronDecayChoice
                     hadron={["Κ", <sup>+</sup>]}
                     firstProduct={["μ", <sup>+</sup>]}
                     secondProduct={["ν", <sub>μ</sub>]}
+                    key={5}
                 />
                 <HadronDecayChoice
                     hadron={["π", <sup>+</sup>]}
                     firstProduct={["μ", <sup>+</sup>]}
                     secondProduct={["ν", <sub>μ</sub>]}
+                    key={6}
                 />
             </div>
         </div >)

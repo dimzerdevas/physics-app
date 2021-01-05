@@ -12,6 +12,7 @@ function HadronDecayGamePlay({ hadronDecay }) {
     const [selectedParticles, setSelectedParticles] = useState([])
     const [wrongChoice, setWrongChoice] = useState(false)
     const [hasCompletedFirstStage, setHasCompletedFirstStage] = useState(false)
+    const [hasChosenParticleStageTwo, setHasChosenParticleStageTwo] = useState(false)
 
     const findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) != index)
 
@@ -99,12 +100,11 @@ function HadronDecayGamePlay({ hadronDecay }) {
         }
     }
 
-    const chooseParticleToMatchDecay = (name) => {
-        console.log('here')
+    const chooseParticleToMatchDecay = () => {
+        setHasChosenParticleStageTwo(true)
     }
     return (
         <div>
-            <p>GamePlay για την διασπαση ανδρονιων</p>
             <HadronDecayElement
                 hadron={hadron}
                 firstProduct={firstProduct}
@@ -137,7 +137,6 @@ function HadronDecayGamePlay({ hadronDecay }) {
                                         <Particle
                                             name={particleName}
                                             onClick={chooseParticleToMatchDecay}
-                                            correctDecay={correctComboStageTwo[3]}
                                             isClickable={hasCompletedFirstStage}
                                             index={index}
                                             key={index}
@@ -202,7 +201,13 @@ function HadronDecayGamePlay({ hadronDecay }) {
                             addnewparticle={addnewparticle}
                         />
                     </div>)}
-                {hasCompletedFirstStage && <FeynmanSection />}
+                {hasCompletedFirstStage && (
+                    <FeynmanSection
+                        name={hadronTranslator(hadron[0])}
+                        correctCombo={correctComboStageTwo[hadronTranslator(hadron[0])][3]}
+                        hasChosenCorrectParticle={hasChosenParticleStageTwo}
+                    />)
+                }
             </div>
 
 
