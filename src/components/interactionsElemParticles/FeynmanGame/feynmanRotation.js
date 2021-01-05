@@ -57,7 +57,7 @@ function FeynmanRotation({toggleOpenGame, initialReact, initialResult, dataColle
                     <div className="center"></div>
                     <div className="right-bar"></div>
                     <div className='particle right-particle'>
-                        {currentRelationship[0]}
+                        {currentRelationship[3]}
                     </div>
                     <div className="right-top-bar"></div>
                     <div className='particle right-top-particle'>
@@ -65,7 +65,7 @@ function FeynmanRotation({toggleOpenGame, initialReact, initialResult, dataColle
                     </div>
                     <div className="right-bottom-bar"></div>
                     <div className='particle right-bottom-particle'>
-                        {currentRelationship[3]}
+                        {currentRelationship[0]}
                     </div>
                 </div>
             }
