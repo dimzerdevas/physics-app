@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FeynmanInteraction({ react, result, onClick, index }) {
+function HadronFeynmanInteraction({ react, result, onClick, index }) {
     const arrowHTML = <span>&#8594;</span>
 
     const chooseInteraction = () => {
@@ -12,10 +12,10 @@ function FeynmanInteraction({ react, result, onClick, index }) {
             <input className="pointer" id={{react} + "_" + {result}} type="radio" onClick={chooseInteraction} />
             <label for={{react} + "_" + {result}}
                    className="feynman-diagram__label pointer">
-                {react} {arrowHTML} {result} W<sup>+</sup>
+                {react}-{result}-W
             </label>
         </div>
     )
 }
 
-export default FeynmanInteraction;
+export default HadronFeynmanInteraction;

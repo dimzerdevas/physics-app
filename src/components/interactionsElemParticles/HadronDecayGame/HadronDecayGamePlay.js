@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ParticleButton from '../../elementaryParticles/elemParticleGame/elemParticleGameButton'
 import Particle from '../../elementaryParticles/elemParticleGame/elemParticle'
 import HadronDecayElement from './hadronDecayElement'
+import FeynmanSection from './HadronDecayFeynmanSection'
 
 import { isEqual } from 'lodash'
 
@@ -18,6 +19,15 @@ function HadronDecayGamePlay({ hadronDecay }) {
     const correctCombo = {
         n: ["u", "d", "d"],
         lamda: ["u", "d", "s"],
+        sigma: ["d", "d", "s"],
+        omega: ["s", "s", "s"],
+        kappa: ["u", "s_"],
+        pi: ["u", "d_"],
+    }
+
+    const correctComboStageTwo = {
+        n: ["d", "u", "d", "u-d-W"],
+        lamda: ["s", "u", "d"],
         sigma: ["d", "d", "s"],
         omega: ["s", "s", "s"],
         kappa: ["u", "s_"],
@@ -67,6 +77,27 @@ function HadronDecayGamePlay({ hadronDecay }) {
     }
 
     const chooseParticleToMatchDecay = (name) => {
+        console.log('here')
+        switch (hadron[0]) {
+            // case 'n':
+            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.n)
+            //     break;
+            // case 'Λ':
+            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.lamda)
+            //     break;
+            // case 'Σ':
+            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.sigma)
+            //     break;
+            // case 'Ω':
+            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.omega)
+            //     break;
+            // case 'Κ':
+            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.kappa)
+            //     break;
+            // case 'π':
+            //     checkCorrectParticles(newSelectedParticles, particleName, correctCombo.pi)
+            //     break;
+        }
     }
     return (
         <div>
@@ -100,56 +131,58 @@ function HadronDecayGamePlay({ hadronDecay }) {
                     {wrongChoice && !hasCompletedFirstStage && <p>Επιλέξτε κάποιο άλλο κουάρκ σωματίδιο</p>}
                     {hasCompletedFirstStage && <p>Συμπληρώσατε όλα τα κουαρκ σωστά</p>}
                 </div>
-                <div className="quark-particles-container">
-                    <ParticleButton
-                        id="u"
-                        name="u"
-                        load="2/3"
-                        index="1"
-                        displayedName={["u"]}
-                        addnewparticle={addnewparticle}
-                    />
-                    <ParticleButton
-                        id="d"
-                        name="d"
-                        load="-1/3"
-                        index="2"
-                        displayedName={["d"]}
-                        addnewparticle={addnewparticle}
-                    />
-                    <ParticleButton
-                        id="s"
-                        name="s"
-                        load="-1/3"
-                        index="3"
-                        displayedName={["s"]}
-                        addnewparticle={addnewparticle}
-                    />
-                    <ParticleButton
-                        id="u_"
-                        name="u_"
-                        load="-2/3"
-                        index="4"
-                        displayedName={[<span style={{ 'textDecoration': 'overline' }}>u</span>]}
-                        addnewparticle={addnewparticle}
-                    />
-                    <ParticleButton
-                        id="d_"
-                        name="d_"
-                        load="1/3"
-                        index="5"
-                        displayedName={[<span style={{ 'textDecoration': 'overline' }}>d</span>]}
-                        addnewparticle={addnewparticle}
-                    />
-                    <ParticleButton
-                        id="s_"
-                        name="s_"
-                        load="1/3"
-                        index="6"
-                        displayedName={[<span style={{ 'textDecoration': 'overline' }}>s</span>]}
-                        addnewparticle={addnewparticle}
-                    />
-                </div>
+                {!hasCompletedFirstStage &&
+                    (<div className="quark-particles-container">
+                        <ParticleButton
+                            id="u"
+                            name="u"
+                            load="2/3"
+                            index="1"
+                            displayedName={["u"]}
+                            addnewparticle={addnewparticle}
+                        />
+                        <ParticleButton
+                            id="d"
+                            name="d"
+                            load="-1/3"
+                            index="2"
+                            displayedName={["d"]}
+                            addnewparticle={addnewparticle}
+                        />
+                        <ParticleButton
+                            id="s"
+                            name="s"
+                            load="-1/3"
+                            index="3"
+                            displayedName={["s"]}
+                            addnewparticle={addnewparticle}
+                        />
+                        <ParticleButton
+                            id="u_"
+                            name="u_"
+                            load="-2/3"
+                            index="4"
+                            displayedName={[<span style={{ 'textDecoration': 'overline' }}>u</span>]}
+                            addnewparticle={addnewparticle}
+                        />
+                        <ParticleButton
+                            id="d_"
+                            name="d_"
+                            load="1/3"
+                            index="5"
+                            displayedName={[<span style={{ 'textDecoration': 'overline' }}>d</span>]}
+                            addnewparticle={addnewparticle}
+                        />
+                        <ParticleButton
+                            id="s_"
+                            name="s_"
+                            load="1/3"
+                            index="6"
+                            displayedName={[<span style={{ 'textDecoration': 'overline' }}>s</span>]}
+                            addnewparticle={addnewparticle}
+                        />
+                    </div>)}
+                {hasCompletedFirstStage && <FeynmanSection />}
             </div>
 
 
