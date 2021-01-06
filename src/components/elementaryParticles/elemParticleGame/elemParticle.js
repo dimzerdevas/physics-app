@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import classNames from 'classnames';
-
 function Particle({ name, index, onClick, isClickable, classStyle }) {
     const [hasBeenChosenStageTwo, setHasBeenChosenStageTwo] = useState(false)
 
