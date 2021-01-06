@@ -12,7 +12,7 @@ function HadronFeynmanRotation({ particleToMatch, dataCollection }) {
             case 'd':
                 return <span>d</span>
             case 'd_':
-                return <span style={{ 'textDecoration': 'overline' }}>u</span>
+                return <span style={{ 'textDecoration': 'overline' }}>d</span>
             case 's':
                 return <span>s</span>
             case 's_':

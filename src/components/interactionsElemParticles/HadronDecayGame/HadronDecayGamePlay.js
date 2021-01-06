@@ -48,7 +48,7 @@ function HadronDecayGamePlay({ hadronDecay }) {
         } else {
             setWrongChoice(true)
         }
-        isEqual(selectedParticles, correctParticles) && setHasCompletedFirstStage(true)
+        isEqual(selectedParticles.sort(), correctParticles.sort()) && setHasCompletedFirstStage(true)
     }
 
     const addnewparticle = (particleName) => {
