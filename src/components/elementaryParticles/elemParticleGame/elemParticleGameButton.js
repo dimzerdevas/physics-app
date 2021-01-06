@@ -1,13 +1,25 @@
 import React from 'react';
 
-function ParticleButton(props) {
+function ParticleButton({name, addnewparticle, load, index, id, displayedName}) {
     const clickHandler = () => {
-        props.onClick(props.name)
-    }
+        addnewparticle(name);
+    };
+
+    const keyHandler = (event) => {
+        if (event.which === 13) {
+            addnewparticle(name);
+        }
+    };
+
     return (
-        <div className="particle-btn" onClick={clickHandler}>
-            <button id={props.id}>Όνομα: {props.name}</button>
-            <p>Φορτίο: {props.load}</p>
+        <div aria-label={"particle " + name + " with load " + load}
+             tabIndex="0"
+             role="button"
+             key={index}
+             className="bariums-mesons__particle"
+             onKeyDown={event => keyHandler(event)}
+             onClick={clickHandler}>
+            <p id={id}>{displayedName} <br/> {load} </p>
         </div>
     )
 }

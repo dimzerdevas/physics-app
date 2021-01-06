@@ -1,14 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
-function FeynmanInteraction(props) {
+function FeynmanInteraction({ react, result, onClick, index }) {
+    const arrowHTML = <span>&#8594;</span>
+
+    const chooseInteraction = () => {
+        onClick(react, result, index)
+    }
+
     return (
-        <div >
-            <Link to="feynman-game-rotation">
-                <button type="radio">O</button>
-            </Link>
-            <span>{props.react} → {props.result} W+</span> 
-        </div>)
+        <div>
+            <input className="pointer" id={{react} + "_" + {result}} type="radio" onClick={chooseInteraction} />
+            <label for={{react} + "_" + {result}}
+                   className="feynman-diagram__label pointer">
+                {react} {arrowHTML} {result} W<sup>+</sup>
+            </label>
+        </div>
+    )
 }
 
 export default FeynmanInteraction;

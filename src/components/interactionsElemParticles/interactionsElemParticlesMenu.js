@@ -3,25 +3,29 @@ import { Link } from 'react-router-dom'
 
 function InteractionsElemParticlesMenu() {
     return (
-        <div className="homepage-container">
-            <header className="intro-header">
+        <div className="content-container">
+            <header className="content-container__header">
                 <h1>ΑΛΛΗΛΕΠΙΔΡΑΣΕΙΣ ΣΤΟΙΧΕΙΩΔΩΝ ΣΩΜΑΤΙΔΙΩΝ</h1>
+                <p>Πάμε να μάθουμε μερικά νέα πράγματα!</p>
             </header>
             <main>
-                <ul className="elemparticles--menu">
-                    <Link to="/interactions-elementary-particles-theory">
-                        <li className="elemparticles--option">Θεωρία</li>
-                    </Link>
-                    <Link to="/interactions-feyman-game">
-                        <li className="elemparticles--option">Παιξε με τα διαγράμματα Feyman</li>
-                    </Link>
-                    <Link to="/interactions-hadron-decay-game">
-                        <li className="elemparticles--option">Παιξε με την διάσπαση Ανδρονίων</li>
-                    </Link>
-                </ul>
-
+                <section className="main-menu">
+                    <div className="main-menu__home-links subCategories-menu--padding">
+                        <p>Διάβασε προσεχτικά την θεωρία και μετά παίξε το παιχνίδια για να τεστάρεις τις γνώσεις σου!</p>
+                        <Link tabIndex="-1" to="/interactions-elementary-particles-theory">
+                            <button className="main-menu__option main-menu__option--first">ΘΕΩΡΙΑ</button>
+                        </Link>
+                        <Link tabIndex="-1" to="/interactions-feynman-game">
+                            <button className="main-menu__option main-menu__option--second">ΠΑΙΞΕ ΜΕ ΤΑ ΔΙΑΓΡΑΜΜΑΤΑ FEYMAN</button>
+                        </Link>
+                        <Link tabIndex="-1" to="/interactions-hadron-decay-game">
+                            <button className="main-menu__option">ΠΑΙΞΕ ΜΕ ΤΗ ΔΙΑΣΠΑΣΗ ΑΝΔΡΟΝΙΩΝ</button>
+                        </Link>
+                    </div>
+                </section>
             </main>
-        </div>)
+        </div>
+    )
 }
 
 export default InteractionsElemParticlesMenu;
