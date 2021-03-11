@@ -39,7 +39,7 @@ const fourth_game_data_collection = [
     ["vμ_", "μ+", "arrow", "W+"],
 ];
 
-function FeynmanSection({ correctCombo, correctParticle, name, hasChosenCorrectParticle }) {
+function FeynmanSection({ correctCombo, correctParticle, name, hasChosenCorrectParticle, finishMatching }) {
     const [hasChosenInteraction, setHasChosenInteraction] = useState(false);
     const [selected, setSelected] = useState({ react: '', result: '', dataCollectionSelected: [] });
     const [displayWrongChoiceMessage, setDisplayWrongChoiceMessage] = useState(false)
@@ -130,6 +130,7 @@ function FeynmanSection({ correctCombo, correctParticle, name, hasChosenCorrectP
             <div className="feynman-rotation-container">
                 <HadronFeynmanRotation
                     particleToMatch={correctParticle}
+                    finishMatching={finishMatching}
                     dataCollection={selected.dataCollectionSelected}
                 />
             </div>

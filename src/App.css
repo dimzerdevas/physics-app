@@ -623,7 +623,6 @@ a {
   margin: 0 2px;
 }
 
-
 .hadron-left-top-bar {
   position: absolute;
   height: 5px;
@@ -828,4 +827,79 @@ h1,
 h2 {
   margin: 0;
   padding: 0;
+}
+
+.triangle-left-particle {
+  left: 91px;
+}
+
+.triangle-top-right-particle {
+  bottom: 420px;
+  left: 200px;
+}
+.triangle-bottom-right-particle {
+  left: 200px;
+  top: 40px;
+}
+
+.triangle {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.triangle-center {
+  position: absolute;
+  height: 11px;
+  width: 10px;
+  top: 10px;
+  left: 160px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: black;
+  z-index: 1;
+}
+.triangle-connection-bar{
+  position: absolute;
+  height: 5px;
+  width: 67px;
+  top: 6px;
+  left: 24px;
+  border-radius: 3px;
+  background-color: #43474f;
+  z-index: 0;
+}
+.triangle-left-bar {
+  position: absolute;
+  height: 5px;
+  width: 32px;
+  top: 12px;
+  left: 128px;
+  border-radius: 3px;
+  background-color: #43474f;
+  z-index: 0;
+}
+
+.triangle-top-bar {
+  position: absolute;
+  height: 5px;
+  width: 53px;
+  top: -10px;
+  left: 163px;
+  border-radius: 3px;
+  background-color: #43474f;
+  z-index: 0;
+  transform: rotateZ(-45deg);
+}
+
+.triangle-bottom-bar {
+  position: absolute;
+  height: 5px;
+  width: 56px;
+  top: 28px;
+  left: 154px;
+  border-radius: 3px;
+  background-color: #43474f;
+  z-index: 0;
+  transform: rotateZ(45deg);
 }

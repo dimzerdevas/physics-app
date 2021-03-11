@@ -3,6 +3,7 @@ import ParticleButton from '../../elementaryParticles/elemParticleGame/elemParti
 import Particle from '../../elementaryParticles/elemParticleGame/elemParticle'
 import HadronDecayElement from './hadronDecayElement'
 import FeynmanSection from './HadronDecayFeynmanSection'
+import HadronTriangle from './HadronTriangle'
 
 import { isEqual } from 'lodash'
 
@@ -13,6 +14,8 @@ function HadronDecayGamePlay({ hadronDecay }) {
     const [wrongChoice, setWrongChoice] = useState(false)
     const [hasCompletedFirstStage, setHasCompletedFirstStage] = useState(false)
     const [hasChosenParticleStageTwo, setHasChosenParticleStageTwo] = useState(false)
+    const [hasFinishedStageTwo, setHasFinishedStageTwo] = useState(false)
+    const [triangleParticles, setTriangleParticles] = useState([])
 
     const findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) != index)
 
@@ -47,7 +50,11 @@ function HadronDecayGamePlay({ hadronDecay }) {
         } else {
             setWrongChoice(true)
         }
-        isEqual(selectedParticles.sort(), correctParticles.sort()) && setHasCompletedFirstStage(true)
+
+        const sortedSelectedParticles = selectedParticles.slice().sort()
+
+        isEqual(sortedSelectedParticles, correctParticles.sort()) &&
+            setHasCompletedFirstStage(true)
     }
 
     const addnewparticle = (particleName) => {
@@ -102,8 +109,15 @@ function HadronDecayGamePlay({ hadronDecay }) {
     const chooseParticleToMatchDecay = () => {
         setHasChosenParticleStageTwo(true)
     }
+
+
+    const finishTriangleMatching = (left, topRight, bottomRight) => {
+        setHasFinishedStageTwo(!hasFinishedStageTwo)
+        setTriangleParticles([left, topRight, bottomRight])
+    }
     return (
         <div>
+
             <HadronDecayElement
                 hadron={hadron}
                 firstProduct={firstProduct}
@@ -130,22 +144,23 @@ function HadronDecayGamePlay({ hadronDecay }) {
                         </div>)}
                     {hasCompletedFirstStage &&
                         (<div className="particle-display">
-                            {correctComboStageTwo[hadronTranslator(hadron[0])].map((particleName, index) => {
-                                if (index <= 2) {
-                                    return (
-                                        <Particle
-                                            name={particleName}
-                                            onClick={chooseParticleToMatchDecay}
-                                            isClickable={hasCompletedFirstStage}
-                                            index={index}
-                                            key={index}
-                                            classStyle={" particle_hadron_" + index}
-                                        />
-                                    )
-                                }
-                            })}
+                            {selectedParticles.map((particleName, index) => {
+                                return (
+                                    <Particle
+                                        name={particleName}
+                                        onClick={chooseParticleToMatchDecay}
+                                        isClickable={hasCompletedFirstStage}
+                                        index={index}
+                                        correctParticle={correctComboStageTwo[hadronTranslator(hadron[0])][0]}
+                                        key={index}
+                                        hasCompletedStageTwo={hasFinishedStageTwo}
+                                        classStyle={" particle_hadron_" + index}
+                                        triangleParticles={triangleParticles}
+                                    />
+                                )
+                            }
+                            )}
                         </div>)}
-
                     {wrongChoice && !hasCompletedFirstStage && <p>Επιλέξτε κάποιο άλλο κουάρκ σωματίδιο</p>}
                     {hasCompletedFirstStage && <p>Συμπληρώσατε όλα τα κουαρκ σωστά</p>}
                 </div>
@@ -206,6 +221,7 @@ function HadronDecayGamePlay({ hadronDecay }) {
                         correctCombo={correctComboStageTwo[hadronTranslator(hadron[0])][3]}
                         correctParticle={correctComboStageTwo[hadronTranslator(hadron[0])][0]}
                         hasChosenCorrectParticle={hasChosenParticleStageTwo}
+                        finishMatching={finishTriangleMatching}
                     />)
                 }
             </div>

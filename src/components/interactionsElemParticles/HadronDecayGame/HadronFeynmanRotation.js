@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function HadronFeynmanRotation({ particleToMatch, dataCollection }) {
+function HadronFeynmanRotation({ particleToMatch, dataCollection, finishMatching }) {
     const arrowHTML = <span>&#8594;</span>
 
     const changeDisplayedDataCollection = (dataCollection) => dataCollection.map(position => position.map(particle => {
@@ -90,8 +90,9 @@ function HadronFeynmanRotation({ particleToMatch, dataCollection }) {
     };
 
     const checkForMatch = () => {
-        if (particleToMatch === currentRelationship[0].props.children) {
+        if (particleToMatch === currentRelationship[0].props.children && !currentRelationship[0].props.style) {
             setDisplayCorrectMatch(true)
+            finishMatching(currentRelationship[0], currentRelationship[2], currentRelationship[3])
         } else {
             setDisplayCorrectMatch(false)
         }
@@ -99,38 +100,41 @@ function HadronFeynmanRotation({ particleToMatch, dataCollection }) {
 
     return (
         <div className="triangle-container">
-            { currentRelationship.indexOf('arrow') === 1 ?
-                <div className="one_left_triangle">
-                    <div className="center"></div>
-                    <div className="hadron-left-bar"></div>
-                    <div className='particle hadron-left-particle'>
-                        {currentRelationship[0]}
-                    </div>
-                    <div className="hadron-left-top-bar"></div>
-                    <div className='particle hadron-left-top-particle'>
-                        {currentRelationship[2]}
-                    </div>
-                    <div className="hadron-left-bottom-bar"></div>
-                    <div className='particle hadron-left-bottom-particle'>
-                        {currentRelationship[3]}
-                    </div>
-                </div> :
-                <div className="two_left_triangle">
-                    <div className="center"></div>
-                    <div className="hadron-right-bar"></div>
-                    <div className='particle hadron-right-particle'>
-                        {currentRelationship[3]}
-                    </div>
-                    <div className="hadron-right-bottom-bar"></div>
-                    <div className='particle hadron-right-bottom-particle'>
-                        {currentRelationship[0]}
-                    </div>
-                    <div className="hadron-right-top-bar"></div>
-                    <div className='particle hadron-right-top-particle'>
-                        {currentRelationship[1]}
-                    </div>
-                </div>
-            }
+            {!displayCorrectMatch && (
+                <div>
+                    {currentRelationship.indexOf('arrow') === 1 ?
+                        <div className="one_left_triangle">
+                            <div className="center"></div>
+                            <div className="hadron-left-bar"></div>
+                            <div className='particle hadron-left-particle'>
+                                {currentRelationship[0]}
+                            </div>
+                            <div className="hadron-left-top-bar"></div>
+                            <div className='particle hadron-left-top-particle'>
+                                {currentRelationship[2]}
+                            </div>
+                            <div className="hadron-left-bottom-bar"></div>
+                            <div className='particle hadron-left-bottom-particle'>
+                                {currentRelationship[3]}
+                            </div>
+                        </div> :
+                        <div className="two_left_triangle">
+                            <div className="center"></div>
+                            <div className="hadron-right-bar"></div>
+                            <div className='particle hadron-right-particle'>
+                                {currentRelationship[3]}
+                            </div>
+                            <div className="hadron-right-bottom-bar"></div>
+                            <div className='particle hadron-right-bottom-particle'>
+                                {currentRelationship[0]}
+                            </div>
+                            <div className="hadron-right-top-bar"></div>
+                            <div className='particle hadron-right-top-particle'>
+                                {currentRelationship[1]}
+                            </div>
+                        </div>
+                    }
+                </div>)}
             {!displayCorrectMatch &&
                 (<p style={{
                     color: 'red', position: "absolute", top: "4%", left: '66%', width: '200px'
