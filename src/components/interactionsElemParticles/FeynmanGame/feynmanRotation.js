@@ -29,10 +29,10 @@ function FeynmanRotation({toggleOpenGame, dataCollection}) {
                 return <span>μ<sup>+</sup></span>
             case 'μ-':
                 return <span>μ<sup>-</sup></span>
-            case 'νμ':
-                return <span>ν<sub>μ</sub></span>
-            case 'νμ_':
-                return <span style={{ 'textDecoration': 'overline' }}>ν<sub>μ</sub></span>
+            case 'vμ':
+                return <span>v<sub>μ</sub></span>
+            case 'vμ_':
+                return <span style={{ 'textDecoration': 'overline' }}>v<sub>μ</sub></span>
             case 'W+':
                 return <span>W<sup>+</sup></span>
             case 'W-':
@@ -74,20 +74,25 @@ function FeynmanRotation({toggleOpenGame, dataCollection}) {
     };
 
     const rotateOpposite = () => {
-        const newRotationStatus = !isRotationEnabled;
+        // const newRotationStatus = !isRotationEnabled;
+        //
+        // const newReversedDataCollection = reversedDataCollection.map((relationship, index) => {
+        //     let newRelationship = relationship.slice();
+        //     newRelationship[0] = relationship[3];
+        //     newRelationship[1] = relationship[2];
+        //     newRelationship[2] = relationship[1];
+        //     newRelationship[3] = relationship[0];
+        //     return newRelationship;
+        // });
+        //
+        // setReversedDataCollection(newReversedDataCollection);
+        // setCurrentRelationship(newReversedDataCollection[currentIndex]);
+        // setIsRotationEnabled(newRotationStatus);
 
-        const newReversedDataCollection = reversedDataCollection.map((relationship, index) => {
-            let newRelationship = relationship.slice();
-            newRelationship[0] = relationship[3];
-            newRelationship[1] = relationship[2];
-            newRelationship[2] = relationship[1];
-            newRelationship[3] = relationship[0];
-            return newRelationship;
-        });
-
-        setReversedDataCollection(newReversedDataCollection);
-        setCurrentRelationship(newReversedDataCollection[currentIndex]);
-        setIsRotationEnabled(newRotationStatus);
+        let newIndex = (dataCollection.length-1) >= (currentIndex+3) ? (currentIndex+3) : ((currentIndex+3) - (dataCollection.length))
+        setCurrentIndex(newIndex);
+        isRotationEnabled ? setCurrentRelationship(changeDisplayedDataCollection(dataCollection)[newIndex])
+                : setCurrentRelationship(reversedDataCollection[newIndex]);
     };
 
     return (
