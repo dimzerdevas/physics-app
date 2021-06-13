@@ -18,9 +18,9 @@ function InteractionsElemParticlesMenu() {
                         <Link tabIndex="-1" to="/interactions-feynman-game">
                             <button className="main-menu__option main-menu__option--second">ΠΑΙΞΕ ΜΕ ΤΑ ΔΙΑΓΡΑΜΜΑΤΑ FEYMAN</button>
                         </Link>
-                        <Link tabIndex="-1" to="/interactions-hadron-decay-game">
-                            <button className="main-menu__option">ΠΑΙΞΕ ΜΕ ΤΗ ΔΙΑΣΠΑΣΗ ΑΝΔΡΟΝΙΩΝ</button>
-                        </Link>
+                        {/*<Link tabIndex="-1" to="/interactions-hadron-decay-game">*/}
+                        {/*    <button className="main-menu__option">ΠΑΙΞΕ ΜΕ ΤΗ ΔΙΑΣΠΑΣΗ ΑΝΔΡΟΝΙΩΝ</button>*/}
+                        {/*</Link>*/}
                     </div>
                 </section>
             </main>
