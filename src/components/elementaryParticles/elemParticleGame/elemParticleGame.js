@@ -3,27 +3,49 @@ import ParticleButton from './elemParticleGameButton'
 import Particle from './elemParticle'
 
 const correctParticleCombinations = {
+    // FOR_TWO_PARTICLES: [
+    //     ["u", "u_"],
+    //     ["d", "d_"],
+    //     ["s", "s_"],
+    //     ["u", "d_"],
+    //     ["u", "s_"],
+    //     ["d", "u_"],
+    //     ["d", "s_"],
+    //     ["s", "u_"],
+    //     ["s", "d_"],
+    // ],
     FOR_TWO_PARTICLES: [
-        ["u", "u_"],
-        ["d", "d_"],
-        ["s", "s_"],
-        ["u", "d_"],
-        ["u", "s_"],
-        ["d", "u_"],
-        ["d", "s_"],
-        ["s", "u_"],
-        ["s", "d_"],
+        [["u", "u_"], <text>ω<sup>0</sup> μεσόνιο</text>],
+        [["d", "d_"], <text>ω<sup>0</sup> μεσόνιο</text>],
+        [["s", "s_"], <text>φ μεσόνιο</text>],
+        [["u", "d_"], <text>π<sup>+</sup> μεσόνιο</text>],
+        [["u", "s_"], <text>K<sup>+</sup> μεσόνιο</text>],
+        [["d", "u_"], <text>π<sup>-</sup> μεσόνιο</text>],
+        [["d", "s_"], <text>Κ<sup>0</sup> μεσόνιο</text>],
+        [["s", "u_"], <text>Κ<sup>-</sup> μεσόνιο</text>],
+        [["s", "d_"], <text><span style={{ 'textDecoration': 'overline' }}>Κ</span><sup>0</sup> μεσόνιο</text>],
     ],
+    // FOR_THREE_PARTICLES: [
+    //     ["u", "u", "u"],
+    //     ["u", "u", "d"],
+    //     ["u", "u", "s"],
+    //     ["u", "d", "d"],
+    //     ["u", "s", "s"],
+    //     ["d", "d", "d"],
+    //     ["d", "d", "s"],
+    //     ["s", "s", "s"],
+    //     ["s", "s", "d"]
+    // ]
     FOR_THREE_PARTICLES: [
-        ["u", "u", "u"],
-        ["u", "u", "d"],
-        ["u", "u", "s"],
-        ["u", "d", "d"],
-        ["u", "s", "s"],
-        ["d", "d", "d"],
-        ["d", "d", "s"],
-        ["s", "s", "s"],
-        ["s", "s", "d"]
+        [["u", "u", "u"], <text>Δ<sup>++</sup></text>],
+        [["u", "u", "d"], <text>n νετρόνιο</text>],
+        [["u", "u", "s"], <text>Σ<sup>+</sup></text>],
+        [["u", "d", "d"], <text>p νετρόνιο</text>],
+        [["u", "s", "s"], <text>Ξ<sup>0</sup></text>],
+        [["d", "d", "d"], <text>Δ<sup>-</sup></text>],
+        [["d", "d", "s"], <text>Σ<sup>-</sup></text>],
+        [["s", "s", "s"], <text>Ω<sup>-</sup></text>],
+        [["s", "s", "d"], <text>Ξ<sup>-</sup></text>]
     ]
 };
 
@@ -33,6 +55,7 @@ const ElemParticlesGame = () => {
     const [warningTooMany, setWarningTooMany] = useState(false);
     const [endGame, setEndGame] = useState(false);
     const [winner, setWinner] = useState(false);
+    const [correctParticleCombinationFound, setCorrectParticleCombinationFound] = useState("");
 
     const addNewParticle = (particleName) => {
         const newSelectedParticles = selectedParticles.slice();
@@ -54,13 +77,14 @@ const ElemParticlesGame = () => {
 
         correctParticleCombinations.FOR_TWO_PARTICLES.forEach(correctParticleCombination => {
             if (!particlesMatched) {
-                const correctParticleCombinationJoined = correctParticleCombination.slice().sort().join('');
+                const correctParticleCombinationJoined = correctParticleCombination[0].slice().sort().join('');
                 selectedMatchIsCorrect = correctParticleCombinationJoined.localeCompare(selectedParticlesJoined);
 
                 if (selectedMatchIsCorrect === 0) {
                     setWinner(true);
                     setEndGame(true);
                     particlesMatched = true;
+                    setCorrectParticleCombinationFound(correctParticleCombination[1]);
                 }
             }
         });
@@ -68,6 +92,7 @@ const ElemParticlesGame = () => {
         if (selectedMatchIsCorrect !== 0) {
             setWinner(false);
             setEndGame(true);
+            setCorrectParticleCombinationFound("");
         }
     };
 
@@ -78,13 +103,14 @@ const ElemParticlesGame = () => {
 
         correctParticleCombinations.FOR_THREE_PARTICLES.forEach(correctParticleCombination => {
             if (!particlesMatched) {
-                const correctParticleCombinationJoined = correctParticleCombination.slice().sort().join('');
+                const correctParticleCombinationJoined = correctParticleCombination[0].slice().sort().join('');
                 selectedMatchIsCorrect = correctParticleCombinationJoined.localeCompare(selectedParticlesJoined);
 
                 if (selectedMatchIsCorrect === 0) {
                     setWinner(true);
                     setEndGame(true);
                     particlesMatched = true;
+                    setCorrectParticleCombinationFound(correctParticleCombination[1]);
                 }
             }
         });
@@ -92,6 +118,7 @@ const ElemParticlesGame = () => {
         if (selectedMatchIsCorrect !== 0) {
             setWinner(false);
             setEndGame(true);
+            setCorrectParticleCombinationFound("");
         }
         setWarningTooMany(false);
     };
@@ -109,6 +136,7 @@ const ElemParticlesGame = () => {
         setWarningTooMany(false);
         setEndGame(false);
         setWinner(false);
+        setCorrectParticleCombinationFound("")
     };
 
     return (
@@ -125,7 +153,7 @@ const ElemParticlesGame = () => {
                     )
                 })}
                 {warningTooMany ? <div className="particles-error">Μπορείς να επιλέξεις μέχρι τρία σωματίδια. Δοκίμασε ξανά πατώντας επαναφορά.</div> : null}
-                {endGame ? winner ? <div className="particles-success">Μπράβο, παίξε ξανά πατώντας επαναφορά.</div> : <div className="particles-error">Δυστυχώς η συσχέτιση των σωματιδίων δεν είναι σωστή, παίξε ξανά πατώντας επαναφορά.</div> : null}
+                {endGame ? winner ? <div className="particles-success"> Μπράβο, βρήκες το {correctParticleCombinationFound}.<br />Παίξε ξανά πατώντας επαναφορά.</div> : <div className="particles-error">Δυστυχώς η συσχέτιση των σωματιδίων δεν είναι σωστή, παίξε ξανά πατώντας επαναφορά.</div> : null}
                 <div className="particle-header">
                     Επίλεξε τα σωματίδια και προσπάθησε να σχηματίσεις την σωστή σχέση, επαληθεύοντας όσα έμαθες στην θεωρία.
                 </div>
