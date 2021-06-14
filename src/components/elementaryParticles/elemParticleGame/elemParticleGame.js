@@ -40,7 +40,7 @@ const correctParticleCombinations = {
         [["u", "u", "u"], <text>Δ<sup>++</sup></text>],
         [["u", "u", "d"], <text>n νετρόνιο</text>],
         [["u", "u", "s"], <text>Σ<sup>+</sup></text>],
-        [["u", "d", "d"], <text>p νετρόνιο</text>],
+        [["u", "d", "d"], <text>p πρωτόνιο</text>],
         [["u", "s", "s"], <text>Ξ<sup>0</sup></text>],
         [["d", "d", "d"], <text>Δ<sup>-</sup></text>],
         [["d", "d", "s"], <text>Σ<sup>-</sup></text>],
