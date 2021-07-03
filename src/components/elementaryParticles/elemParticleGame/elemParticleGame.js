@@ -15,9 +15,9 @@ const correctParticleCombinations = {
     //     ["s", "d_"],
     // ],
     FOR_TWO_PARTICLES: [
-        [["u", "u_"], <text>ω<sup>0</sup> μεσόνιο</text>],
-        [["d", "d_"], <text>ω<sup>0</sup> μεσόνιο</text>],
-        [["s", "s_"], <text>φ μεσόνιο</text>],
+        [["u", "u_"], <text>η ή π<sup>0</sup> μεσόνιο</text>],
+        [["d", "d_"], <text>η ή π<sup>0</sup> μεσόνιο</text>],
+        [["s", "s_"], <text>η μεσόνιο</text>],
         [["u", "d_"], <text>π<sup>+</sup> μεσόνιο</text>],
         [["u", "s_"], <text>K<sup>+</sup> μεσόνιο</text>],
         [["d", "u_"], <text>π<sup>-</sup> μεσόνιο</text>],
@@ -38,14 +38,26 @@ const correctParticleCombinations = {
     // ]
     FOR_THREE_PARTICLES: [
         [["u", "u", "u"], <text>Δ<sup>++</sup></text>],
-        [["u", "u", "d"], <text>n νετρόνιο</text>],
+        [["u", "u", "d"], <text>p πρωτόνιο</text>],
         [["u", "u", "s"], <text>Σ<sup>+</sup></text>],
-        [["u", "d", "d"], <text>p πρωτόνιο</text>],
+        [["u", "d", "d"], <text>n νετρόνιο</text>],
         [["u", "s", "s"], <text>Ξ<sup>0</sup></text>],
         [["d", "d", "d"], <text>Δ<sup>-</sup></text>],
         [["d", "d", "s"], <text>Σ<sup>-</sup></text>],
         [["s", "s", "s"], <text>Ω<sup>-</sup></text>],
-        [["s", "s", "d"], <text>Ξ<sup>-</sup></text>]
+        [["d", "s", "s"], <text>Ξ<sup>-</sup></text>],
+        [["u", "d", "s"], <text>Λ ή Σ<sup>0</sup></text>],
+        [["u_", "u_", "u_"], <text>Δ<sup>--</sup></text>],
+        [["u_", "u_", "d_"], <text><span style={{ 'textDecoration': 'overline' }}>p</span> αντιπρωτόνιο</text>],
+        [["u_", "u_", "s_"], <text>Σ<sup>-</sup></text>],
+        [["d_", "d_", "d_"], <text>Δ<sup>+</sup></text>],
+        [["u_", "d_", "d_"], <text><span style={{ 'textDecoration': 'overline' }}>n</span> αντινετρόνιο</text>],
+        [["d_", "d_", "s_"], <text>Σ<sup>+</sup></text>],
+        [["s_", "s_", "s_"], <text>Ω<sup>+</sup></text>],
+        [["u_", "s_", "s_"], <text><span style={{ 'textDecoration': 'overline' }}>Ξ</span><sup>0</sup></text>],
+        [["d_", "s_", "s_"], <text>Ξ<sup>+</sup></text>],
+        [["d_", "s_", "s_"], <text>Ξ<sup>+</sup></text>],
+        [["u_", "d_", "s_"], <text><span style={{ 'textDecoration': 'overline' }}>Λ</span> ή <span style={{ 'textDecoration': 'overline' }}>Σ</span><sup>0</sup></text>]
     ]
 };
 
